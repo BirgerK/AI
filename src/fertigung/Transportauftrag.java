@@ -1,23 +1,35 @@
 package fertigung;
-
+import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import verkaufskomponente.Angebot;
-
+@Entity
+@Table(name = "Transportauftrag")
 public class Transportauftrag {
-
-	int id;
-	int kundenNr;
-	Date transporttermin;
-	int fertigungsauftragNr;
-	String adresse;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	@Column
+	private int kundenNr;
+	@Column
+	private Date transporttermin;
+	@OneToOne
+	@JoinColumn(name="fertigungsauftragId")
+	private Fertigungsauftrag fertigungsauftrag;
+	@Column
+	private String adresse;
 	
 	public static Transportauftrag getTransportauftrag(Angebot angebot){
 		return new Transportauftrag(angebot);
 	}
 	
 	private Transportauftrag(Angebot angebot){
-		this.id = new ID().getID();
 		//this.adresse = angebot.getLieferAdresse();
 	}
 	
@@ -35,6 +47,6 @@ public class Transportauftrag {
 	}
 	
 	public void setFertigungsauftragNr(int nr){
-		this.fertigungsauftragNr = nr;
+		this.fertigungsauftrag.getFertigungsauftragNr();
 	}
 }

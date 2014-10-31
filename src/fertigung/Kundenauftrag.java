@@ -7,7 +7,7 @@ import verkaufskomponente.Angebot;
 public class Kundenauftrag {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int kundenauftragId;
 	@Column
 	private int kundenNr;
 	@Column
@@ -23,6 +23,6 @@ public class Kundenauftrag {
 	}
 	
 	public int getKundenauftragNr(){
-		return this.id;
+		return this.kundenauftragId;
 	}
 }

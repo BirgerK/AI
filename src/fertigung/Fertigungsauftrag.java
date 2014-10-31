@@ -1,17 +1,28 @@
 package fertigung;
-
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import verkaufskomponente.Angebot;
-
+@Entity
+@Table(name = "Fertigungsauftrag")
 public class Fertigungsauftrag {
-	
-	int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int fertigungsAuftragId;
+	@Column
 	Angebot angebot;
+	@Column
 	Date fertigungsBeginn;
+	@Column
 	Date fertigungsEnde;
+	@Column
 	Set<Komponente> komponenten;
 
 	public static Fertigungsauftrag getFertigungsauftrag(Angebot angebot){
@@ -19,15 +30,14 @@ public class Fertigungsauftrag {
 	}
 	
 	private Fertigungsauftrag(Angebot angebot){
-		this.id = new ID().getID();
 		this.angebot = angebot;
 		this.fertigungsBeginn = new Date();
-		//komponenten = angebot.getKomponenten(); Müssen wir befüllen oder im Angebot implementieren
+		//komponenten = angebot.getKomponenten(); Muessen wir befuellen oder im Angebot implementieren
 		this.fertigungsEnde = this.berechneFertigungszeitpunkt();
 	}
 	
 	public int getFertigungsauftragNr(){
-		return this.id;
+		return this.fertigungsAuftragId;
 	}
 	
 	public Date getFertigungsEnde(){

@@ -23,6 +23,7 @@ public class Fertigungsauftrag {
 		this.angebot = angebot;
 		this.fertigungsBeginn = new Date();
 		//komponenten = angebot.getKomponenten(); Müssen wir befüllen oder im Angebot implementieren
+		this.fertigungsEnde = this.berechneFertigungszeitpunkt();
 	}
 	
 	public int getFertigungsauftragNr(){
@@ -42,6 +43,20 @@ public class Fertigungsauftrag {
 			result.add(elem.getFertigungsdauer());
 		}
 		return result;
+	}
+	
+	public Date berechneFertigungszeitpunkt() {
+		Set<Integer> dauer = this.getFertigungsdauer();
+		int result = 0;
+		Date date = new Date();
+		
+		for(int i: dauer){
+			result = result + i;
+		}
+		int timeInMlls = (date.getMinutes()+result)*1000*1000;
+		date.setTime(timeInMlls);	
+		
+		return date;
 	}
 	
 	public void setFertigungsEnde(Date date){

@@ -16,17 +16,7 @@ public class Fertigungsmanagement implements IFertigung{
 
 	@Override
 	public Date berechneFertigungszeitpunkt() {
-		Set<Integer> dauer = auftragsverwalter.getFertigungsdauer();
-		int result = 0;
-		Date date = new Date();
-		
-		for(int i: dauer){
-			result = result + i;
-		}
-		int timeInMlls = (date.getMinutes()+result)*1000*1000;
-		date.setTime(timeInMlls);	
-		
-		return date;
+		return auftragsverwalter.getFertigungsdauer();
 	}
 
 	@Override

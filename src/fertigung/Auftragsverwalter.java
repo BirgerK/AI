@@ -37,8 +37,8 @@ public class Auftragsverwalter {
 	
 	//######Fertigungsauftrag Setter Getter########
 	
-	public Set<Integer> getFertigungsdauer(){
-		return this.fertigungsauftrag.getFertigungsdauer();
+	public Date getFertigungsdauer(){
+		return this.fertigungsauftrag.getFertigungsEnde();
 	}
 	
 	public void setFertigungsEnde(Date date){

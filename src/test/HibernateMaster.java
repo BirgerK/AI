@@ -14,7 +14,7 @@ public class HibernateMaster {
 	private static String pathToHibernateConfig = "test/hibernate.cfg.xml";
 	private HibernateMaster(){}
 	
-	public static void initialize(){
+	public static void initializeHibernate(){
 		hibernateConfig=new Configuration();
 		hibernateConfig.configure(pathToHibernateConfig);
 		hibernateFactory=hibernateConfig.buildSessionFactory();

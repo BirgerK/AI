@@ -39,9 +39,7 @@ public class Angebot {
 	public Angebot(Set<Komponente> komponenten){
 		this.komponenten = komponenten;
 	}
-	public Angebot(){
-		
-	}
+	public Angebot(){}
 	
 	public int getAngebotNr(){
 		return this.angebotId;

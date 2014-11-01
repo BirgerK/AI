@@ -13,6 +13,7 @@ public class Kundenauftrag {
 	public Kundenauftrag(Angebot angebot){
 		this.angebot = angebot;
 	}
+	public Kundenauftrag(){}
 	
 	//### GETTER ###
 	public int getKundenauftragNr(){

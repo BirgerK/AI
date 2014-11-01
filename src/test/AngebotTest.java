@@ -46,7 +46,7 @@ public class AngebotTest {
 		dummyAngebot = new Angebot(komponenten);
 		
 		//Instanzen fuer die DB gebraucht wird
-		HibernateMaster.initialize();
+		HibernateMaster.initializeHibernate();
 		
 		dummyWithFertigung = new Angebot(komponenten);
 		dummyFertigung = new Fertigungsauftrag(dummyWithFertigung);

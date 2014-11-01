@@ -1,6 +1,8 @@
 package models;
 import javax.persistence.*;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,6 +37,7 @@ public class Fertigungsauftrag {
 		this.fertigungsBeginn = new Date();
 		this.fertigungsEnde = this.berechneFertigungszeitpunkt(angebot.getKomponenten());
 	}
+	public Fertigungsauftrag(){}
 	
 	//### GETTER ###
 	public int getFertigungsauftragNr(){
@@ -49,31 +52,34 @@ public class Fertigungsauftrag {
 		return this.angebot;
 	}
 	
-	/*
-	 * Integer = Zeit in Minuten
+	
+	/**Berechnet die Dauer der Fertigstellung aller angegebenen Komponenten
+	 * @param komponenten Ein Set von Komponenten
+	 * @return Dauer in ms
 	 */
-	public Set<Integer> getFertigungsdauer(Set<Komponente> komponenten){
-		Set<Integer> result = new HashSet<Integer>();
+	public int getFertigungsdauer(Set<Komponente> komponenten){
+		int SECOND_IN_MS = 1000;
+		int MINUTE_IN_SECONDS = 60;
+		int MINUTE_IN_MS = MINUTE_IN_SECONDS * SECOND_IN_MS;
+		
+		
+		int result = 0;
 		for(Komponente elem: komponenten){
-			result.add(elem.getFertigungsdauer());
+			result += elem.getFertigungsdauer();
 		}
-		return result;
+		return (result*MINUTE_IN_MS);
 	}
 	
 	
 	
 	private Date berechneFertigungszeitpunkt(Set<Komponente> komponenten) {
-		Set<Integer> dauer = this.getFertigungsdauer(komponenten);
-		int result = 0;
-		Date date = new Date();
+		int fertigungsDauer = getFertigungsdauer(komponenten);
+
+		long fertigStellungInMS = System.currentTimeMillis() + fertigungsDauer;
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(fertigStellungInMS);
 		
-		for(int i: dauer){
-			result = result + i;
-		}
-		int timeInMlls = (date.getMinutes()+result)*1000*1000;
-		date.setTime(timeInMlls);	
-		
-		return date;
+		return calendar.getTime();
 	}
 	
 }

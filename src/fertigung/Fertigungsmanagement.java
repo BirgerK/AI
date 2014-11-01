@@ -2,7 +2,10 @@ package fertigung;
 import java.util.Date;
 import java.util.Set;
 
-import verkaufskomponente.Angebot;
+import models.Angebot;
+import models.Fertigungsauftrag;
+import models.Kundenauftrag;
+import models.Transportauftrag;
 import iFertigung.IFertigung;
 
 public class Fertigungsmanagement implements IFertigung{
@@ -15,27 +18,23 @@ public class Fertigungsmanagement implements IFertigung{
 	}
 
 	@Override
-	public Date berechneFertigungszeitpunkt() {
-		return auftragsverwalter.getFertigungsdauer();
+	public Date berechneFertigungszeitpunkt(int fertigungsAuftragId) {
+		return auftragsverwalter.getFertigungsdauer(fertigungsAuftragId);
 	}
 
 	@Override
-	public Boolean erstelleFertigungsauftrag(Angebot angebot) {
+	public Fertigungsauftrag erstelleFertigungsauftrag(Angebot angebot) {
 		return auftragsverwalter.erstelleFertigungsauftrag(angebot);
 	}
 
 	@Override
-	public Boolean erstelleTransportauftrag(Angebot angebot) {
+	public Transportauftrag erstelleTransportauftrag(Angebot angebot) {
 		return auftragsverwalter.erstelleTransportauftrag(angebot);
 	}
 
 	@Override
-	public Boolean erstelleKundenauftrag(Angebot angebot) {
+	public Kundenauftrag erstelleKundenauftrag(Angebot angebot) {
 		return auftragsverwalter.erstelleKundensauftrag(angebot);
-	}
-	
-	public void setTransporttermin(){
-		auftragsverwalter.setLieferTermin();
 	}
 	
 	

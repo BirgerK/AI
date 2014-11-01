@@ -1,7 +1,9 @@
-import fertigung.Auftragsverwalter;
-import fertigung.Fertigungsmanagement;
-import iFertigung.*;
-//import fertigung.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import models.Angebot;
+import models.Fertigungsauftrag;
+import fertigung.*;
 import verkaufskomponente.*;
 
 
@@ -9,14 +11,16 @@ public class main {
 
 	public static void main(String[] args) {
 		Fertigungsmanagement fertigung = new Fertigungsmanagement(new Auftragsverwalter());
+		Set<Komponente> komponenten = new HashSet<Komponente>();
+		komponenten.add(new Komponente("Nasenbohrer",5));
 		
-		Angebot angebot = new Angebot();
+		Angebot angebot = new Angebot(komponenten);
 		
-		fertigung.erstelleFertigungsauftrag(angebot);
+		Fertigungsauftrag auftrag = fertigung.erstelleFertigungsauftrag(angebot);
 		fertigung.erstelleKundenauftrag(angebot);
 		fertigung.erstelleTransportauftrag(angebot);
 		
-		System.out.println(fertigung.berechneFertigungszeitpunkt().toString());
+		System.out.println(auftrag.getFertigungsEnde());
 
 	}
 

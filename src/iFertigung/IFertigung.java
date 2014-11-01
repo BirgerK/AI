@@ -2,16 +2,20 @@ package iFertigung;
 
 import java.util.Date;
 
-import verkaufskomponente.Angebot;
+import models.Angebot;
+import models.Fertigungsauftrag;
+import models.Kundenauftrag;
+import models.Transportauftrag;
+import fertigung.*;
 
 public interface IFertigung {
 
-	public Date berechneFertigungszeitpunkt();
+	public Date berechneFertigungszeitpunkt(int fertigungsAuftragId);
 	
-	public Boolean erstelleFertigungsauftrag(Angebot angebot);
+	public Fertigungsauftrag erstelleFertigungsauftrag(Angebot angebot);
 	
-	public Boolean erstelleTransportauftrag(Angebot angebot);
+	public Transportauftrag erstelleTransportauftrag(Angebot angebot);
 	
-	public Boolean erstelleKundenauftrag(Angebot angebot);
+	public Kundenauftrag erstelleKundenauftrag(Angebot angebot);
 	
 }

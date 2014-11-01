@@ -1,69 +1,73 @@
 package fertigung;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import verkaufskomponente.Angebot;
+import models.Angebot;
+import models.Fertigungsauftrag;
+import models.Kundenauftrag;
+import models.Transportauftrag;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class Auftragsverwalter {
-	
-	Fertigungsauftrag fertigungsauftrag;
-	Kundenauftrag kundenauftrag;
-	Transportauftrag transportauftrag;
+	private Configuration hibernateConfig = null;
+	private SessionFactory hibernateFactory = null;
+	private Session hibernateSession = null;
 	
 	//Constructor
 	public Auftragsverwalter(){
-		
+		hibernateConfig=new Configuration();
+		hibernateConfig.configure("model/hibernate.cfg.xml");//populates the data of the configuration file
+		//creating seession factory object
+		hibernateFactory=hibernateConfig.buildSessionFactory();	//creating session object
+		hibernateSession=hibernateFactory.openSession();	//creating transaction object
 	}
 	//######Methoden ########
 	
-	public Boolean erstelleFertigungsauftrag(Angebot angebot) {
-		this.fertigungsauftrag = Fertigungsauftrag.getFertigungsauftrag(angebot);
-		return true;
+	public Fertigungsauftrag erstelleFertigungsauftrag(Angebot angebot) {
+		Fertigungsauftrag temp = new Fertigungsauftrag(angebot);
+		persistObject(temp);
+		return temp;
 	}
 	
-	public Boolean erstelleKundensauftrag(Angebot angebot) {
-		this.kundenauftrag = Kundenauftrag.getKundenauftrag(angebot);
-		this.setKundeFertigungsauftragNr();
-		return true;
+	public Kundenauftrag erstelleKundensauftrag(Angebot angebot) {
+		Kundenauftrag temp = new Kundenauftrag(angebot);
+		persistObject(temp);
+		return temp;
 	}
 	
-	public Boolean erstelleTransportauftrag(Angebot angebot) {
-		this.transportauftrag = Transportauftrag.getTransportauftrag(angebot);
-		this.setKundenNr();
-		this.setTransportFertigungsauftragNr();
-		return true;
+	public Transportauftrag erstelleTransportauftrag(Angebot angebot) {
+		Transportauftrag temp = new Transportauftrag(angebot);
+		persistObject(temp);
+		return temp;
 	}
 	
 	//######Fertigungsauftrag Setter Getter########
 	
-	public Date getFertigungsdauer(){
-		return this.fertigungsauftrag.getFertigungsEnde();
+	public Date getFertigungsdauer(int fertigungsAuftragId){
+		Fertigungsauftrag receivedAuftrag = (Fertigungsauftrag) loadObject(Fertigungsauftrag.class, fertigungsAuftragId);
+		return receivedAuftrag.getFertigungsEnde();
 	}
 	
-	public void setFertigungsEnde(Date date){
-		fertigungsauftrag.setFertigungsEnde(date);
+	
+	//#######Helper#########
+	private void persistObject(Object object){
+		if(!(hibernateSession.isOpen())){
+			hibernateFactory.openSession();
+		}
+		Transaction hibernateTransaction = hibernateSession.beginTransaction();
+		hibernateSession.persist(object);
+		hibernateTransaction.commit();
 	}
-	
-	//######Kundensauftrag Setter Getter########
-	
-	public void setKundeFertigungsauftragNr(){
-		this.kundenauftrag.setFertigungsauftragNr(this.fertigungsauftrag.getFertigungsauftragNr());
-	}
-	
-	//######Transportauftrag Setter Getter########
-	
-	public void setKundenNr(){
-		this.transportauftrag.setKundenNr(this.kundenauftrag.getKundenauftragNr());
-	}
-	
-	public void setLieferTermin(){
-		Date termin = this.fertigungsauftrag.getFertigungsEnde();
-		termin.setDate((termin.getMinutes()+ 3600)*1000*1000);
-		this.transportauftrag.setLieferTermin(termin);
-	}
-	
-	public void setTransportFertigungsauftragNr(){
-		this.transportauftrag.setFertigungsauftragNr(this.fertigungsauftrag.getFertigungsauftragNr());
+	private Object loadObject(Class entityClassName,Serializable id){
+		if(!(hibernateSession.isOpen())){
+			hibernateFactory.openSession();
+		}
+		return hibernateSession.load(entityClassName, id);
 	}
 }

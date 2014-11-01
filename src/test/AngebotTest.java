@@ -2,12 +2,15 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import models.Angebot;
 import models.Fertigungsauftrag;
+import models.Komponente;
 
+import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -39,15 +42,17 @@ public class AngebotTest {
 		
 		//Instanzen fuer die DB gebraucht wird
 		hibernateConfig=new Configuration();
-		hibernateConfig.configure(pathToHibernateConfig);//populates the data of the configuration file
-		//creating seession factory object
-		hibernateFactory=hibernateConfig.buildSessionFactory();	//creating session object
-		hibernateSession=hibernateFactory.openSession();	//creating transaction object
+		hibernateConfig.configure(pathToHibernateConfig);
+		hibernateFactory=hibernateConfig.buildSessionFactory();
+		hibernateSession=hibernateFactory.openSession();
+		hibernateSession.setFlushMode(FlushMode.AUTO);
 		
 		dummyWithFertigung = new Angebot(komponenten);
-		persistObject(dummyWithFertigung);
+		
 		dummyFertigung = new Fertigungsauftrag(dummyWithFertigung);
-		persistObject(dummyFertigung);
+		dummyWithFertigung.setFertigungsauftrag(dummyFertigung);
+		persistObject(dummyWithFertigung);
+		
 	}
 
 	@AfterClass
@@ -64,32 +69,48 @@ public class AngebotTest {
 
 	@Test
 	public void testGetKomponenten() {
-		assertEquals(dummyAngebot.getKomponenten(), komponenten);
+		assertEquals(komponenten,dummyAngebot.getKomponenten());
 	}
 
 	@Test
 	public void testGetKundenauftrag() {
-		assertEquals(dummyAngebot.getKundenauftrag(),null);
+		assertEquals(null,dummyAngebot.getKundenauftrag());
 	}
 
 	@Test
 	public void testGetFertigungsauftrag() {
-		assertEquals(dummyAngebot.getFertigungsauftrag(),null);
-		assertEquals(dummyWithFertigung.getFertigungsauftrag(),dummyFertigung);
+		assertEquals(null,dummyAngebot.getFertigungsauftrag());
+		
+		Angebot angebotFromPersistence = (Angebot) loadObject(Angebot.class,1);
+		assertEquals(dummyFertigung, angebotFromPersistence.getFertigungsauftrag());
 	}
 
 	@Test
 	public void testGetTransportauftrag() {
-		assertEquals(dummyAngebot.getTransportauftrag(),null);
+		assertEquals(null,dummyAngebot.getTransportauftrag());
 	}
 	
 	private static void persistObject(Object object){
+//		if(!(hibernateSession.isOpen())){
+//			hibernateFactory.openSession();
+//		}
+//		Transaction hibernateTransaction = hibernateSession.beginTransaction();
+		hibernateSession.saveOrUpdate(object);
+//		hibernateTransaction.commit();
+	}
+	private static void updateObject(Object object){
 		if(!(hibernateSession.isOpen())){
 			hibernateFactory.openSession();
 		}
 		Transaction hibernateTransaction = hibernateSession.beginTransaction();
-		hibernateSession.persist(object);
+		hibernateSession.update(object);
 		hibernateTransaction.commit();
+	}
+	private static Object loadObject(Class entityClassName,Serializable id){
+		if(!(hibernateSession.isOpen())){
+			hibernateFactory.openSession();
+		}
+		return hibernateSession.load(entityClassName, id);
 	}
 
 }

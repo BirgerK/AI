@@ -5,9 +5,9 @@ import javax.persistence.*;
 public class Kundenauftrag {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int kundenauftragId;
+	private int kundenAuftragId;
 	@OneToOne
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name="angebotId")
 	private Angebot angebot = null;
 	
 	public Kundenauftrag(Angebot angebot){
@@ -16,6 +16,6 @@ public class Kundenauftrag {
 	
 	//### GETTER ###
 	public int getKundenauftragNr(){
-		return this.kundenauftragId;
+		return this.kundenAuftragId;
 	}
 }

@@ -2,12 +2,15 @@ package models;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
-
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import fertigung.*;
@@ -16,21 +19,28 @@ import fertigung.*;
 @Table(name = "Angebot")
 public class Angebot {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int angebotId;
-	@Column
-	private Set<Komponente> komponenten;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Angebot_Komponente", joinColumns = { @JoinColumn(name = "angebotId") }, inverseJoinColumns = { @JoinColumn(name = "komponenteId") })  
+	private Set<Komponente> komponenten = new HashSet<Komponente>();
 	
 	//Auftraege die zu diesem Angebot gehoeren:
-	@OneToOne(mappedBy="Angebot", cascade = CascadeType.ALL)
-	private Kundenauftrag kundenAuftrag = null;
-	@OneToOne(mappedBy="Angebot", cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="kundenAuftragId")
+	private Kundenauftrag kundenAuftrag;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name="Angebot_Fertigungsauftrag", joinColumns = @JoinColumn(name="angebotId"), inverseJoinColumns = @JoinColumn(name="fertigungsAuftragId"))
 	private Fertigungsauftrag fertigungsAuftrag = null;
-	@OneToOne(mappedBy="Angebot", cascade = CascadeType.ALL)
-	private Transportauftrag transportAuftrag = null;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="transportAuftragId")
+	private Transportauftrag transportAuftrag;
 	
 	public Angebot(Set<Komponente> komponenten){
 		this.komponenten = komponenten;
+	}
+	public Angebot(){
+		
 	}
 	
 	public Set<Komponente> getKomponenten(){
@@ -45,5 +55,21 @@ public class Angebot {
 	}
 	public Transportauftrag getTransportauftrag(){
 		return this.transportAuftrag;
+	}
+	
+	public void setKundenauftrag(Kundenauftrag newAuftrag){
+		if(this.kundenAuftrag != null){
+			this.kundenAuftrag = newAuftrag;
+		}
+	}
+	public void setFertigungsauftrag(Fertigungsauftrag newAuftrag){
+//		if(this.fertigungsAuftrag != null){
+			this.fertigungsAuftrag = newAuftrag;
+//		}
+	}
+	public void setTransportauftrag(Transportauftrag newAuftrag){
+		if(this.transportAuftrag != null){
+			this.transportAuftrag = newAuftrag;
+		}
 	}
 }

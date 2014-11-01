@@ -5,23 +5,25 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import fertigung.Komponente;
 @Entity
 @Table(name = "Fertigungsauftrag")
 public class Fertigungsauftrag {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int fertigungsAuftragId;
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name="Angebot_Fertigungsauftrag", joinColumns = @JoinColumn(name="fertigungsAuftragId"), inverseJoinColumns = @JoinColumn(name="angebotId"))
 	private Angebot angebot = null;
 	@Column
 	Date fertigungsBeginn;
@@ -41,6 +43,10 @@ public class Fertigungsauftrag {
 	
 	public Date getFertigungsEnde(){
 		return this.fertigungsEnde;
+	}
+	
+	public Angebot getAngebot(){
+		return this.angebot;
 	}
 	
 	/*

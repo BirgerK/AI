@@ -7,17 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Transportauftrag")
 public class Transportauftrag {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int transportAuftragid;
 	@Column
 	private Date transporttermin = null;;
 	@OneToOne
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name="angebotId")
 	private Angebot angebot = null;
 	
 	public Transportauftrag(Angebot angebot){
@@ -26,6 +27,6 @@ public class Transportauftrag {
 	
 	//### GETTER ###
 	public int getTransportauftragNr(){
-		return this.id;
+		return this.transportAuftragid;
 	}
 }

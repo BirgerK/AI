@@ -18,6 +18,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static test.HibernateMaster.*;
 
 import fertigung.*;
 
@@ -35,10 +36,7 @@ public class AngebotTest {
 	static Transportauftrag dummyTransport;
 	
 	static Set<Komponente> komponenten;
-	private static Configuration hibernateConfig = null;
-	private static SessionFactory hibernateFactory = null;
-	private static Session hibernateSession = null;
-	private static String pathToHibernateConfig = "test/hibernate.cfg.xml";
+
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -48,11 +46,7 @@ public class AngebotTest {
 		dummyAngebot = new Angebot(komponenten);
 		
 		//Instanzen fuer die DB gebraucht wird
-		hibernateConfig=new Configuration();
-		hibernateConfig.configure(pathToHibernateConfig);
-		hibernateFactory=hibernateConfig.buildSessionFactory();
-		hibernateSession=hibernateFactory.openSession();
-		hibernateSession.setFlushMode(FlushMode.AUTO);
+		HibernateMaster.initialize();
 		
 		dummyWithFertigung = new Angebot(komponenten);
 		dummyFertigung = new Fertigungsauftrag(dummyWithFertigung);
@@ -115,19 +109,6 @@ public class AngebotTest {
 		assertEquals(dummyTransport, angebotFromPersistence.getTransportauftrag());
 	}
 	
-	private static void persistObject(Object object){
-//		if(!(hibernateSession.isOpen())){
-//			hibernateFactory.openSession();
-//		}
-//		Transaction hibernateTransaction = hibernateSession.beginTransaction();
-		hibernateSession.saveOrUpdate(object);
-//		hibernateTransaction.commit();
-	}
-	private static Object loadObject(Class entityClassName,Serializable id){
-		if(!(hibernateSession.isOpen())){
-			hibernateFactory.openSession();
-		}
-		return hibernateSession.load(entityClassName, id);
-	}
+	
 
 }

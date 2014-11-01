@@ -1,10 +1,14 @@
-package models;
+package test;
 
 import static org.junit.Assert.*;
 import static utils.HibernateMaster.*;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import models.Angebot;
+import models.Komponente;
+import models.Kundenauftrag;
 
 import org.junit.After;
 import org.junit.AfterClass;

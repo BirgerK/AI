@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-
-import fertigung.*;
 
 @Entity
 @Table(name = "Angebot")

@@ -21,8 +21,6 @@ import fertigung.Auftragsverwalter;
 import static utils.HibernateMaster.*;
 
 public class AuftragsverwalterTest {
-	private static Fertigungsauftrag dummy;
-	private static int dummyId;
 	private static Angebot dummyAngebot;
 	private static Set<Komponente> komponenten = new HashSet<Komponente>();
 	private static Auftragsverwalter averwalter;

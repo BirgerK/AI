@@ -6,7 +6,6 @@ import models.Angebot;
 import models.Fertigungsauftrag;
 import models.Kundenauftrag;
 import models.Transportauftrag;
-import fertigung.*;
 
 public interface IFertigung {
 

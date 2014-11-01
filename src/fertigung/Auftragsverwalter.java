@@ -1,18 +1,11 @@
 package fertigung;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 import models.Angebot;
 import models.Fertigungsauftrag;
 import models.Kundenauftrag;
 import models.Transportauftrag;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import static utils.HibernateMaster.*;
 

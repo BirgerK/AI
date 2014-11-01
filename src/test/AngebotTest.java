@@ -2,17 +2,11 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import models.*;
 
-import org.hibernate.FlushMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,7 +15,6 @@ import org.junit.Test;
 
 import utils.HibernateMaster;
 import static utils.HibernateMaster.*;
-import fertigung.*;
 
 public class AngebotTest {
 	static Angebot dummyAngebot;

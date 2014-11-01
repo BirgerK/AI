@@ -19,11 +19,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fertigung.Auftragsverwalter;
-import utils.HibernateMaster;
 
 public class FertigungsmanagementTest {
-	private static Fertigungsauftrag dummy;
-	private static int dummyId;
 	private static Angebot dummyAngebot;
 	private static Set<Komponente> komponenten = new HashSet<Komponente>();
 	private static Auftragsverwalter averwalter;

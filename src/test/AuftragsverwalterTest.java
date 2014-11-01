@@ -1,4 +1,4 @@
-package fertigung;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import fertigung.Auftragsverwalter;
 import static utils.HibernateMaster.*;
 
 public class AuftragsverwalterTest {

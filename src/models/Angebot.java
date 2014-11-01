@@ -43,6 +43,10 @@ public class Angebot {
 		
 	}
 	
+	public int getAngebotNr(){
+		return this.angebotId;
+	}
+	
 	public Set<Komponente> getKomponenten(){
 		return this.komponenten;
 	}
@@ -58,18 +62,12 @@ public class Angebot {
 	}
 	
 	public void setKundenauftrag(Kundenauftrag newAuftrag){
-		if(this.kundenAuftrag != null){
-			this.kundenAuftrag = newAuftrag;
-		}
+		this.kundenAuftrag = newAuftrag;
 	}
 	public void setFertigungsauftrag(Fertigungsauftrag newAuftrag){
-//		if(this.fertigungsAuftrag != null){
-			this.fertigungsAuftrag = newAuftrag;
-//		}
+		this.fertigungsAuftrag = newAuftrag;
 	}
 	public void setTransportauftrag(Transportauftrag newAuftrag){
-		if(this.transportAuftrag != null){
-			this.transportAuftrag = newAuftrag;
-		}
+		this.transportAuftrag = newAuftrag;
 	}
 }

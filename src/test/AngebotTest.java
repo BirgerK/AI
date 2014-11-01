@@ -6,9 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import models.Angebot;
-import models.Fertigungsauftrag;
-import models.Komponente;
+import models.*;
 
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
@@ -26,7 +24,16 @@ import fertigung.*;
 public class AngebotTest {
 	static Angebot dummyAngebot;
 	static Angebot dummyWithFertigung;
+	static int dummyWithFertigungId;
+	static Angebot dummyWithAuftrag;
+	static int dummyWithAuftragId;
+	static Angebot dummyWithTransport;
+	static int dummyWithTransportId;
+	
 	static Fertigungsauftrag dummyFertigung;
+	static Kundenauftrag dummyAuftrag;
+	static Transportauftrag dummyTransport;
+	
 	static Set<Komponente> komponenten;
 	private static Configuration hibernateConfig = null;
 	private static SessionFactory hibernateFactory = null;
@@ -48,10 +55,22 @@ public class AngebotTest {
 		hibernateSession.setFlushMode(FlushMode.AUTO);
 		
 		dummyWithFertigung = new Angebot(komponenten);
-		
 		dummyFertigung = new Fertigungsauftrag(dummyWithFertigung);
 		dummyWithFertigung.setFertigungsauftrag(dummyFertigung);
 		persistObject(dummyWithFertigung);
+		dummyWithFertigungId = dummyWithFertigung.getAngebotNr();
+		
+		dummyWithAuftrag = new Angebot(komponenten);
+		dummyAuftrag = new Kundenauftrag(dummyWithAuftrag);
+		dummyWithAuftrag.setKundenauftrag(dummyAuftrag);
+		persistObject(dummyWithAuftrag);
+		dummyWithAuftragId = dummyWithAuftrag.getAngebotNr();
+		
+		dummyWithTransport = new Angebot(komponenten);
+		dummyTransport = new Transportauftrag(dummyWithTransport);
+		dummyWithTransport.setTransportauftrag(dummyTransport);
+		persistObject(dummyWithTransport);
+		dummyWithTransportId = dummyWithTransport.getAngebotNr();
 		
 	}
 
@@ -75,19 +94,25 @@ public class AngebotTest {
 	@Test
 	public void testGetKundenauftrag() {
 		assertEquals(null,dummyAngebot.getKundenauftrag());
+		
+		Angebot angebotFromPersistence = (Angebot) loadObject(Angebot.class,dummyWithAuftragId);
+		assertEquals(dummyAuftrag, angebotFromPersistence.getKundenauftrag());
 	}
 
 	@Test
 	public void testGetFertigungsauftrag() {
 		assertEquals(null,dummyAngebot.getFertigungsauftrag());
 		
-		Angebot angebotFromPersistence = (Angebot) loadObject(Angebot.class,1);
+		Angebot angebotFromPersistence = (Angebot) loadObject(Angebot.class,dummyWithFertigungId);
 		assertEquals(dummyFertigung, angebotFromPersistence.getFertigungsauftrag());
 	}
 
 	@Test
 	public void testGetTransportauftrag() {
 		assertEquals(null,dummyAngebot.getTransportauftrag());
+		
+		Angebot angebotFromPersistence = (Angebot) loadObject(Angebot.class,dummyWithTransportId);
+		assertEquals(dummyTransport, angebotFromPersistence.getTransportauftrag());
 	}
 	
 	private static void persistObject(Object object){
@@ -97,14 +122,6 @@ public class AngebotTest {
 //		Transaction hibernateTransaction = hibernateSession.beginTransaction();
 		hibernateSession.saveOrUpdate(object);
 //		hibernateTransaction.commit();
-	}
-	private static void updateObject(Object object){
-		if(!(hibernateSession.isOpen())){
-			hibernateFactory.openSession();
-		}
-		Transaction hibernateTransaction = hibernateSession.beginTransaction();
-		hibernateSession.update(object);
-		hibernateTransaction.commit();
 	}
 	private static Object loadObject(Class entityClassName,Serializable id){
 		if(!(hibernateSession.isOpen())){

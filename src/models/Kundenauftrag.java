@@ -12,6 +12,7 @@ public class Kundenauftrag {
 	
 	public Kundenauftrag(Angebot angebot){
 		this.angebot = angebot;
+		this.angebot.setKundenauftrag(this);
 	}
 	public Kundenauftrag(){}
 	

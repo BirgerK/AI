@@ -23,6 +23,7 @@ public class Transportauftrag {
 	
 	public Transportauftrag(Angebot angebot){
 		this.angebot = angebot;
+		angebot.setTransportauftrag(this);
 	}
 	public Transportauftrag(){}
 	

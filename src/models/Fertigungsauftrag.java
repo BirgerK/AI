@@ -36,6 +36,7 @@ public class Fertigungsauftrag {
 		this.angebot = angebot;
 		this.fertigungsBeginn = new Date();
 		this.fertigungsEnde = this.berechneFertigungszeitpunkt(angebot.getKomponenten());
+		this.angebot.setFertigungsauftrag(this);
 	}
 	public Fertigungsauftrag(){}
 	

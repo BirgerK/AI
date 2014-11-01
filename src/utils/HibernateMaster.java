@@ -1,4 +1,4 @@
-package test;
+package utils;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ public class HibernateMaster {
 	private static Configuration hibernateConfig = null;
 	private static SessionFactory hibernateFactory = null;
 	private static Session hibernateSession = null;
-	private static String pathToHibernateConfig = "test/hibernate.cfg.xml";
+	private static String pathToHibernateConfig = "utils/hibernate.cfg.xml";
 	private HibernateMaster(){}
 	
 	public static void initializeHibernate(){

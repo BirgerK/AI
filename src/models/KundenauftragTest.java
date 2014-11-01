@@ -1,13 +1,10 @@
-package test;
+package models;
 
 import static org.junit.Assert.*;
+import static utils.HibernateMaster.*;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import models.Angebot;
-import models.Fertigungsauftrag;
-import models.Komponente;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,10 +12,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static utils.HibernateMaster.*;
-
-public class FertigungsauftragTest {
-	private static Fertigungsauftrag dummy;
+public class KundenauftragTest {
+	private static Kundenauftrag dummy;
 	private static int dummyId;
 	private static Angebot dummyAngebot;
 	private static Set<Komponente> komponenten = new HashSet<Komponente>();
@@ -30,11 +25,9 @@ public class FertigungsauftragTest {
 		//Instanzen fuer die DB gebraucht wird
 		initializeHibernate();
 		
-		dummy = new Fertigungsauftrag(dummyAngebot);
+		dummy = new Kundenauftrag(dummyAngebot);
 		persistObject(dummy);
-		dummyId = dummy.getFertigungsauftragNr();
-		
-		
+		dummyId = dummy.getKundenauftragNr();		
 	}
 
 	@AfterClass
@@ -50,20 +43,9 @@ public class FertigungsauftragTest {
 	}
 
 	@Test
-	public void testGetFertigungsauftragNr() {
-		Fertigungsauftrag temp = (Fertigungsauftrag) loadObject(Fertigungsauftrag.class, dummyId);
-		assertEquals(dummyId,temp.getFertigungsauftragNr());
-	}
-
-	@Test
-	public void testGetAngebot() {
-		Fertigungsauftrag temp = (Fertigungsauftrag) loadObject(Fertigungsauftrag.class, dummyId);
-		assertEquals(dummyAngebot,temp.getAngebot());
-	}
-
-	@Test
-	public void testGetFertigungsdauer() {
-		assertEquals(300000,dummy.getFertigungsdauer(komponenten));
+	public void testGetKundenauftragNr() {
+		Kundenauftrag temp = (Kundenauftrag) loadObject(Kundenauftrag.class, dummyId);
+		assertEquals(dummyId,temp.getKundenauftragNr());
 	}
 
 }

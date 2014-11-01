@@ -19,7 +19,7 @@ public class Fertigungsmanagement implements IFertigung{
 
 	@Override
 	public Date berechneFertigungszeitpunkt(int fertigungsAuftragId) {
-		return auftragsverwalter.getFertigungsdauer(fertigungsAuftragId);
+		return auftragsverwalter.getFertigungsZeitpunkt(fertigungsAuftragId);
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class Fertigungsmanagement implements IFertigung{
 
 	@Override
 	public Kundenauftrag erstelleKundenauftrag(Angebot angebot) {
-		return auftragsverwalter.erstelleKundensauftrag(angebot);
+		return auftragsverwalter.erstelleKundenauftrag(angebot);
 	}
 	
 	

@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import fertigung.Auftragsverwalter;
+import fertigungskomponente.Auftragsverwalter;
 import static utils.HibernateMaster.*;
 
 public class AuftragsverwalterTest {

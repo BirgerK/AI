@@ -21,6 +21,8 @@ public class Angebot {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "Angebot_Komponente", joinColumns = { @JoinColumn(name = "angebotId") }, inverseJoinColumns = { @JoinColumn(name = "komponenteId") })  
 	private Set<Komponente> komponenten = new HashSet<Komponente>();
+	@Column
+	private int kundenNr;
 	
 	//Auftraege die zu diesem Angebot gehoeren:
 	@OneToOne(cascade = CascadeType.ALL)
@@ -33,13 +35,22 @@ public class Angebot {
 	@JoinColumn(name="transportAuftragId")
 	private Transportauftrag transportAuftrag;
 	
-	public Angebot(Set<Komponente> komponenten){
+	public Angebot(Set<Komponente> komponenten,int kundenNr){
 		this.komponenten = komponenten;
+		this.kundenNr = kundenNr;
 	}
 	public Angebot(){}
 	
 	public int getAngebotNr(){
 		return this.angebotId;
+	}
+	
+	public int getFertigungskosten(){
+		int accu = 0;
+		for(Komponente komponente:komponenten){
+			accu +=komponente.getFertigungskosten();
+		}
+		return accu;
 	}
 	
 	public Set<Komponente> getKomponenten(){

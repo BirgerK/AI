@@ -5,7 +5,7 @@ import java.util.Set;
 import models.Angebot;
 import models.Fertigungsauftrag;
 import models.Komponente;
-import fertigung.*;
+import fertigungskomponente.*;
 
 
 public class main {

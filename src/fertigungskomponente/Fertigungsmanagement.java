@@ -1,11 +1,10 @@
-package fertigung;
+package fertigungskomponente;
 import java.util.Date;
 
 import models.Angebot;
 import models.Fertigungsauftrag;
 import models.Kundenauftrag;
 import models.Transportauftrag;
-import iFertigung.IFertigung;
 
 public class Fertigungsmanagement implements IFertigung{
 	

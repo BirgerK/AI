@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import fertigung.Auftragsverwalter;
+import fertigungskomponente.Auftragsverwalter;
 
 public class FertigungsmanagementTest {
 	private static Angebot dummyAngebot;

@@ -14,15 +14,30 @@ public class Komponente {
 	private String name;
 	@Column
 	private int fertigungsdauer;
+	@Column
+	private int anzahl;
+	@Column
+	private int fertigungsKosten;
 	@ManyToMany(mappedBy="komponenten")
 	Set<Angebot> angebote= new HashSet<Angebot>();
 	
-	public Komponente(String name,int dauer){
+	public Komponente(String name,int anzahl,int dauer,int fertigungsKosten){
 		this.name = name;
+		this.anzahl = anzahl;
 		this.fertigungsdauer = dauer;
+		this.fertigungsKosten = fertigungsKosten;
 	}
 	
 	public int getFertigungsdauer(){
 		return fertigungsdauer;
 	}
+	
+	public int getAnzahl(){
+		return anzahl;
+	}
+	
+	public int getFertigungskosten(){
+		return fertigungsKosten;
+	}
+	
 }

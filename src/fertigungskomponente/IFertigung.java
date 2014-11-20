@@ -1,4 +1,4 @@
-package iFertigung;
+package fertigungskomponente;
 
 import java.util.Date;
 

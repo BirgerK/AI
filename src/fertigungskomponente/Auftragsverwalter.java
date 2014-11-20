@@ -1,4 +1,4 @@
-package fertigung;
+package fertigungskomponente;
 
 import java.util.Date;
 
@@ -34,8 +34,6 @@ public class Auftragsverwalter {
 		persistObject(temp);
 		return temp;
 	}
-	
-	//######Fertigungsauftrag Setter Getter########
 	
 	public Date getFertigungsZeitpunkt(int fertigungsAuftragId){
 		Fertigungsauftrag receivedAuftrag = (Fertigungsauftrag) loadObject(Fertigungsauftrag.class, fertigungsAuftragId);

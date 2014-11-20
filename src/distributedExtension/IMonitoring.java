@@ -16,11 +16,21 @@ public interface IMonitoring {
 	/**Gibt die Anzahl der Server wieder, die gerade einen Job bearbeiten.
 	 * @return Anzahl der arbeitenden Server
 	 */
-	public int getBusyServer();
+	public int getAmountBusyServer();
 	
 	/**Gibt den Status des Servers wieder. Die ID's lassen sich per 'getListOfAllServers()' abrufen.
 	 * @param id eindeutige ID des Servers
-	 * @return TRUE falls Server gerade am Arbeiten ist, FALSE falls Server gerade keinen Job bearbeitet.
+	 * @return 'Busy' falls Server gerade am Arbeiten ist, 'Idle' falls Server gerade keinen Job bearbeitet, '
 	 */
-	public boolean statusOfServer(int id);
+	public String statusOfServer(int id);
+	
+	/**Startet den Server.
+	 * @param id ID des Server, der gestartet werden soll
+	 */
+	public void startServer(int id);
+	
+	/**Stoppt den Server
+	 * @param id ID des Server, der gestoppt werden soll
+	 */
+	public void stopServer(int id);
 }

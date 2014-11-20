@@ -62,15 +62,27 @@ public class Dispatcher implements IMPS,IMonitoring {
 	}
 
 	@Override
-	public int getBusyServer() {
+	public int getAmountBusyServer() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public boolean statusOfServer(int id) {
+	public void startServer(int id) {
 		// TODO Auto-generated method stub
-		return false;
+		
+	}
+
+	@Override
+	public void stopServer(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String statusOfServer(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

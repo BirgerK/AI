@@ -12,8 +12,8 @@ public class Verkaufsmanagement implements IVerkauf{
 	private Verkaufsverwalter verwalter = null;
 	private double PREIS_FAKTOR = 1.05;
 	
-	public Verkaufsmanagement() {
-		verwalter = new Verkaufsverwalter();
+	public Verkaufsmanagement(Verkaufsverwalter vverwalter) {
+		verwalter = vverwalter;
 	}
 	
 	@Override

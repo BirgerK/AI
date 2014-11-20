@@ -1,12 +1,12 @@
 package distributedExtension;
 
-import java.util.List;
+import java.util.Set;
 
 public interface IMonitoring {
 	/**Gibt eine List wieder die ID's enthaelt, mit denen in anderen Funktionen auf jeden Server speziell zugegriffen werden kann.
 	 * @return Liste mit Server-ID's
 	 */
-	public List<Integer> getListOfAllServers();
+	public Set<Integer> getListOfAllServers();
 	
 	/**Gibt die Anzahl der Server wieder, die gerade keinen Job zu erledigen haben.
 	 * @return Anzahl der arbeitslosen Server
@@ -20,7 +20,7 @@ public interface IMonitoring {
 	
 	/**Gibt den Status des Servers wieder. Die ID's lassen sich per 'getListOfAllServers()' abrufen.
 	 * @param id eindeutige ID des Servers
-	 * @return 'Busy' falls Server gerade am Arbeiten ist, 'Idle' falls Server gerade keinen Job bearbeitet, '
+	 * @return 'Busy' falls Server gerade am Arbeiten ist, 'Idle' falls Server gerade keinen Job bearbeitet, 'Offline' falls noch gar nicht gestartet, null falls id nicht vorhanden
 	 */
 	public String statusOfServer(int id);
 	

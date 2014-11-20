@@ -16,4 +16,8 @@ public abstract class Constants {
 	public static final String CMD_START_SERVER = "StartServer";
 	public static final String CMD_STOP_SERVER = "StopServer";
 	public static final String ANSWER_DONE = "DONE";
+	
+	public static final String STATUS_OFFLINE = "Offline";
+	public static final String STATUS_BUSY = "Busy";
+	public static final String STATUS_IDLE = "Idle";
 }

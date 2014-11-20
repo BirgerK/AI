@@ -1,8 +1,7 @@
-/utils/
-/iFertigung/
-/fertigung/
+/bossKomponente/
 /fertigungskomponente/
 /test/
+/utils/
 /verkaufskomponente/
-/models/
-/bossKomponente/
+/konnektorKomponente/
+/distributedExtension/

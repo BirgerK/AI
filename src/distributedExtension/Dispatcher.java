@@ -106,7 +106,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IMonitorin
 
 	@Override
 	public void stopServer(int id) throws IOException, ClassNotFoundException, CouldNotStartServerException {
-SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
+		SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
 		
 		socketToServer.writeObject(new MethodInvokeMessage(CMD_STOP_SERVER, null));
 		ResultMessage answerFromServer = (ResultMessage) socketToServer.readObject();

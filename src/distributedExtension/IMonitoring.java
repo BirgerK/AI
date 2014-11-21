@@ -1,5 +1,7 @@
 package distributedExtension;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.Set;
 
 public interface IMonitoring {
@@ -26,11 +28,18 @@ public interface IMonitoring {
 	
 	/**Startet den Server.
 	 * @param id ID des Server, der gestartet werden soll
+	 * @throws IOException 
+	 * @throws UnknownHostException 
+	 * @throws ClassNotFoundException 
+	 * @throws CouldNotStartServerException 
 	 */
-	public void startServer(int id);
+	public void startServer(int id) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException;
 	
 	/**Stoppt den Server
 	 * @param id ID des Server, der gestoppt werden soll
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @throws CouldNotStartServerException 
 	 */
-	public void stopServer(int id);
+	public void stopServer(int id) throws IOException, ClassNotFoundException, CouldNotStartServerException;
 }

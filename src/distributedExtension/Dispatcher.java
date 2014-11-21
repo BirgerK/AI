@@ -1,14 +1,10 @@
 package distributedExtension;
 
-import static utils.Constants.CMD_PING;
-import static utils.Constants.CMD_PONG;
-import static utils.Constants.START_SERVER_SERVICE_PORT;
-import static utils.Constants.STATUS_BUSY;
-import static utils.Constants.STATUS_IDLE;
-import static utils.Constants.STATUS_OFFLINE;
+import static utils.Constants.*;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,51 +20,46 @@ import models.Kundenauftrag;
 import models.Transportauftrag;
 import utils.SocketConnection;
 
-public class Dispatcher implements IDispatcher,IMonitoring {
-	private SocketConnection socket = null;
+public class Dispatcher extends Thread implements IDispatcherToClient,IMonitoring,IDispatcherRequests {
+	private SocketConnection socketToClient = null;
 	private Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Status des Servers
+	private ServerSocket serverSocket = null;
+	private boolean shutdown = false;
 	
 	public Dispatcher(){
 		this.allServer = new HashMap<Integer,List<Object>>();
 	}
 	
+	public void run(){
+		try {
+			serverSocket = new ServerSocket(MPS_DISPATCHER_PORT);
+			
+			while(!shutdown){
+				socketToClient = new SocketConnection();
+				
+				//Auf eine eingehende Verbindung warten
+				socketToClient.setSocket(serverSocket.accept());
+				MethodInvokeMessage clientMessage = (MethodInvokeMessage) socketToClient.readObject();
+				if(clientMessage.getMethodToCall().equals(CMD_ADD_SERVER)){
+					if(clientMessage.getArgumentList().get(0) != null & clientMessage.getArgumentList().get(0) instanceof InetAddress){
+						this.addServer((InetAddress) clientMessage.getArgumentList().get(0));
+						socketToClient.writeObject(new ResultMessage(ANSWER_DONE));
+					}
+					socketToClient.writeObject(new ResultMessage(new WrongArgumentlistException()));
+				} else {
+					new DispatcherRequestHandler(socketToClient, this, clientMessage).start();
+				}
+			}
+		} catch (IOException e) {
+			System.err.println("Dispatcher: Error while listening on port " + MPS_DISPATCHER_PORT);
+		} catch (ClassNotFoundException e) {
+			System.err.println("Dispatcher: Error while receiving Message from Client.");
+		}
+		System.out.println("Dispatcher faehrt nun herunter.");
+	}
 	
-	@Override
-	public Date berechneFertigungszeitpunkt(int fertigungsAuftragId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Fertigungsauftrag erstelleFertigungsauftrag(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Transportauftrag erstelleTransportauftrag(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Kundenauftrag erstelleKundenauftrag(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public double berechneKosten(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Angebot erstelleAngebot(Map<Integer, Integer> matNrZuMenge,int kundenNr) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	
 	@Override
 	public Set<Integer> getListOfAllServers() {
 		return allServer.keySet();
@@ -101,15 +92,29 @@ public class Dispatcher implements IDispatcher,IMonitoring {
 	}
 
 	@Override
-	public void startServer(int id) {
-		// TODO Auto-generated method stub
+	public void startServer(int id) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException {
+		SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
 		
+		socketToServer.writeObject(new MethodInvokeMessage(CMD_START_SERVER, null));
+		ResultMessage answerFromServer = (ResultMessage) socketToServer.readObject();
+		if(answerFromServer.getResult().equals(ANSWER_DONE)){
+			setServerStatusToIdle(id);
+		} else {
+			throw new CouldNotStartServerException();
+		}
 	}
 
 	@Override
-	public void stopServer(int id) {
-		// TODO Auto-generated method stub
+	public void stopServer(int id) throws IOException, ClassNotFoundException, CouldNotStartServerException {
+SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
 		
+		socketToServer.writeObject(new MethodInvokeMessage(CMD_STOP_SERVER, null));
+		ResultMessage answerFromServer = (ResultMessage) socketToServer.readObject();
+		if(answerFromServer.getResult().equals(ANSWER_DONE)){
+			setServerStatusToIdle(id);
+		} else {
+			throw new CouldNotStartServerException();
+		}
 	}
 
 	@Override
@@ -129,11 +134,24 @@ public class Dispatcher implements IDispatcher,IMonitoring {
 		ResultMessage resultMessage = (ResultMessage) connectToServer.readObject();
 		
 		if(resultMessage.getResult().equals(CMD_PONG)){
-			allServer.put(allServer.size()+1, new ArrayList<Object>(Arrays.asList(serverAddresse,STATUS_OFFLINE)));
+			addSafeEntryAllServers(allServer.size()+1, new ArrayList<Object>(Arrays.asList(serverAddresse,STATUS_OFFLINE)));
 		}
 	}
 
+	@Override
+	public synchronized InetAddress getIdleServerAddress() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
+	@Override
+	public void setServerStatusToOffline(InetAddress serverAddress) {
+		for(int key:allServer.keySet()){
+			if(getServerAddress(allServer.get(key)).equals(serverAddress)){ //Falls der zu aendernde Eintrag der jetzige Eintrag ist
+				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,STATUS_OFFLINE)));
+			}
+		}
+	}
 	
 	
 	
@@ -144,4 +162,16 @@ public class Dispatcher implements IDispatcher,IMonitoring {
 	private String getServerStatus(List<Object> mapElement){
 		return (String) mapElement.get(1);
 	}
+	private synchronized void addSafeEntryAllServers(Object key,Object value){
+		allServer.put((Integer) key,(List<Object>) value);
+	}
+	
+	private void setServerStatusToIdle(int id){
+		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),STATUS_IDLE))); //Sieht echt beknackt aus......
+	}
+
+	
+
+
+	
 }

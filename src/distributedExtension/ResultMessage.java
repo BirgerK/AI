@@ -10,4 +10,8 @@ public class ResultMessage {
 	public Object getResult(){
 		return this.result;
 	}
+	
+	public boolean isResultException(){
+		return (result instanceof Exception);
+	}
 }

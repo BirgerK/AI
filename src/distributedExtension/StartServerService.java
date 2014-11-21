@@ -43,7 +43,7 @@ public class StartServerService {
 			case CMD_PING:
 				result = CMD_PONG;
 			case CMD_START_SERVER:
-				serverThread = new ServerThread(SERVER_THREAD_PORT);
+				serverThread = new ServerThread(MPS_SERVER_THREAD_PORT);
 				serverThread.start();
 				result = ANSWER_DONE;
 			case CMD_STOP_SERVER:

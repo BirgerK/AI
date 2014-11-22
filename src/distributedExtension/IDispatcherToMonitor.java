@@ -1,10 +1,11 @@
 package distributedExtension;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Set;
 
-public interface IMonitoring {
+public interface IDispatcherToMonitor {
 	/**Gibt eine List wieder die ID's enthaelt, mit denen in anderen Funktionen auf jeden Server speziell zugegriffen werden kann.
 	 * @return Liste mit Server-ID's
 	 */
@@ -28,18 +29,22 @@ public interface IMonitoring {
 	
 	/**Startet den Server.
 	 * @param id ID des Server, der gestartet werden soll
+	 * @param monitorAddress IP-Adresse oder Hostname des Monitorservers an dem sich der MPS-Server melden soll
 	 * @throws IOException 
 	 * @throws UnknownHostException 
 	 * @throws ClassNotFoundException 
 	 * @throws CouldNotStartServerException 
 	 */
-	public void startServer(int id) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException;
+	public void startServer(int id,InetAddress monitorAddress) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException;
 	
 	/**Stoppt den Server
 	 * @param id ID des Server, der gestoppt werden soll
+	 * @param serverStatus Status des Servers. Nur Stati aus der Konstanten-Klasse verwenden! (Fangen alle mit 'STATUS' an)
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 * @throws CouldNotStartServerException 
 	 */
 	public void stopServer(int id) throws IOException, ClassNotFoundException, CouldNotStartServerException;
+	
+	public void setServerStatus(InetAddress serverAddress,String serverStatus);
 }

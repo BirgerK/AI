@@ -189,7 +189,7 @@ public class SocketConnection {
 	}
 	
 	
-	/**Errechnet die interne IP-Addresse des Sockets
+	/**Gibt die IP-Adresse mit dem der Socket verbunden ist
 	 * @return interne IP-Adresse des Sockets
 	 */
 	public String getClientAddress(){
@@ -217,5 +217,12 @@ public class SocketConnection {
 			inputByteStream.close();
 		}
 		socket.close();
+	}
+	
+	/**Falls der Socket fuer einen ServerSocket verwendet werden soll, wird hier geprueft, ob der Socket nach einem SocketConnection() per setSocket() gesetzt wurde.
+	 * @return true falls Socket gesetzt und verwendbar ist, false falls kein Socket und damit nicht verwendbar ist
+	 */
+	public boolean isSocketSet(){
+		return (socket != null);
 	}
 }

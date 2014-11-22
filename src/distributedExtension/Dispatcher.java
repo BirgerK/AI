@@ -1,6 +1,17 @@
 package distributedExtension;
 
-import static utils.Constants.*;
+import static utils.Constants.ANSWER_DONE;
+import static utils.Constants.CMD_ADD_SERVER;
+import static utils.Constants.CMD_PING;
+import static utils.Constants.CMD_PONG;
+import static utils.Constants.CMD_START_SERVER;
+import static utils.Constants.CMD_STOP_SERVER;
+import static utils.Constants.MPS_DISPATCHER_PORT;
+import static utils.Constants.MPS_SERVER_THREAD_PORT;
+import static utils.Constants.START_SERVER_SERVICE_PORT;
+import static utils.Constants.STATUS_BUSY;
+import static utils.Constants.STATUS_IDLE;
+import static utils.Constants.STATUS_OFFLINE;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -8,21 +19,16 @@ import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import models.Angebot;
-import models.Fertigungsauftrag;
-import models.Kundenauftrag;
-import models.Transportauftrag;
 import utils.SocketConnection;
 
 public class Dispatcher extends Thread implements IDispatcherToClient,IMonitoring,IDispatcherRequests {
 	private SocketConnection socketToClient = null;
-	private Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Status des Servers
+	private static Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Status des Servers
 	private ServerSocket serverSocket = null;
 	private boolean shutdown = false;
 	
@@ -139,9 +145,21 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IMonitorin
 	}
 
 	@Override
-	public synchronized InetAddress getIdleServerAddress() {
-		// TODO Auto-generated method stub
-		return null;
+	public synchronized InetAddress getIdleServerAddress() throws NoIdleServerAvailableException {
+		InetAddress result = null;
+		for(int key:allServer.keySet()){
+			if(getServerStatus(allServer.get(key)).equals(STATUS_IDLE)){
+				result = getServerAddress(allServer.get(key));
+				setServerStatusToBusy(key);
+				break;
+			}
+		}
+		
+		if(result == null){
+			throw new NoIdleServerAvailableException();
+		}
+		
+		return result;
 	}
 	
 	@Override
@@ -168,6 +186,10 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IMonitorin
 	
 	private void setServerStatusToIdle(int id){
 		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),STATUS_IDLE))); //Sieht echt beknackt aus......
+	}
+	
+	private void setServerStatusToBusy(int id){
+		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),STATUS_BUSY))); //Sieht echt beknackt aus......
 	}
 
 	

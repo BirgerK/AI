@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
 			shutdown = true;
 		}
 		
-		//Server wartet auf Verbindungen von auﬂen
+		//Server wartet auf Verbindungen von aussen
 		while(!shutdown){
 			socket = new SocketConnection();
 			MethodInvokeMessage incomingMessage = null;
@@ -52,44 +52,50 @@ public class ServerThread extends Thread {
 				case CMD_ERSTELLE_KUNDENAUFTRAG:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 						result = mps.erstelleKundenauftrag((Angebot) incomingMessage.getArgumentList().get(0));
+					} else {
+						result = new WrongArgumentlistException();
 					}
 				case CMD_BERECHNE_FERTIGUNGSZEIT:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer){
 						result = mps.berechneFertigungszeitpunkt((int) incomingMessage.getArgumentList().get(0));
+					} else {
+						result = new WrongArgumentlistException();
 					}
 				case CMD_ERSTELLE_FERTIGUNGSAUFTRAG:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 						result = mps.erstelleFertigungsauftrag((Angebot) incomingMessage.getArgumentList().get(0));
+					} else {
+						result = new WrongArgumentlistException();
 					}
 				case CMD_ERSTELLE_TRANSPORTAUFTRAG:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 						result = mps.erstelleTransportauftrag((Angebot) incomingMessage.getArgumentList().get(0));
+					} else {
+						result = new WrongArgumentlistException();
 					}
 				case CMD_BERECHNE_KOSTEN:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 						result = mps.berechneKosten((Angebot) incomingMessage.getArgumentList().get(0));
+					} else {
+						result = new WrongArgumentlistException();
 					}
 				case CMD_ERSTELLE_ANGEBOT:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Map &
 							incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof Integer){
 						result = mps.erstelleAngebot((Map<Integer, Integer>) incomingMessage.getArgumentList().get(0),(int) incomingMessage.getArgumentList().get(1));
+					} else {
+						result = new WrongArgumentlistException();
 					}
 				case CMD_PING:
 					result = CMD_PONG;
+				default:
+					result = new MethodNotAvailableException();
 			}
 			
-			if(result != null){	//Falls eine Operation ausgefuehrt wurde, gibt es auch ein Ergebnis und dann wird es versendet
-				try {
-					socket.writeObject(new ResultMessage(result));
-				} catch (IOException e) {
-					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
-				}
-			} else {	//Ansonsten Nachricht an den Dispatcher, dass Aufgabe fertig ist
-				try {
-					socket.writeObject(new ResultMessage(ANSWER_DONE));
-				} catch (IOException e) {
-					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
-				}
+			try {
+				socket.writeObject(new ResultMessage(result));
+			} catch (IOException e) {
+				System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
 			}
 		}
 	}

@@ -21,23 +21,24 @@ public class DispatcherRequestHandler extends Thread{
 	
 	public void run(){
 		//Anfrage an den Server stellen
-		InetAddress serverForRequest = myDispatcher.getIdleServerAddress();
+		InetAddress serverForRequest;
 		ResultMessage result = null;
-		SocketConnection socketToServer = null;
 		try {
-			socketToServer = new SocketConnection(serverForRequest, MPS_SERVER_THREAD_PORT);
-		} catch (Exception e) {
-			result = new ResultMessage(new ServerNotReachableException());
+			serverForRequest = myDispatcher.getIdleServerAddress();
+			SocketConnection socketToServer = new SocketConnection(serverForRequest, MPS_SERVER_THREAD_PORT);
+
+			if (socketToServer != null){	//Server ist also erreichbar
+				try {
+					socketToServer.writeObject(messageToServer);
+					result = new ResultMessage(socketToServer.readObject());
+				} catch (Exception e) {
+					result = new ResultMessage(new ServerCommunicationException());
+				}
+			}
+		} catch (Exception e1) {
+			result = new ResultMessage(e1);
 		}
 		
-		if (socketToServer != null){	//Server ist also erreichbar
-			try {
-				socketToServer.writeObject(messageToServer);
-				result = new ResultMessage(socketToServer.readObject());
-			} catch (Exception e) {
-				result = new ResultMessage(new ServerCommunicationException());
-			}
-		}
 		
 		try {
 			socketToClient.writeObject(result);

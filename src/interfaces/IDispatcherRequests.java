@@ -1,6 +1,8 @@
-package distributedExtension;
+package interfaces;
 
 import java.net.InetAddress;
+
+import exceptions.NoIdleServerAvailableException;
 
 public interface IDispatcherRequests {
 	public InetAddress getIdleServerAddress() throws NoIdleServerAvailableException;

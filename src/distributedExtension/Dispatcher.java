@@ -12,6 +12,9 @@ import static utils.Constants.START_SERVER_SERVICE_PORT;
 import static utils.Constants.STATUS_BUSY;
 import static utils.Constants.STATUS_IDLE;
 import static utils.Constants.STATUS_OFFLINE;
+import interfaces.IDispatcherRequests;
+import interfaces.IDispatcherToClient;
+import interfaces.IDispatcherToMonitor;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -24,6 +27,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import exceptions.CouldNotStartServerException;
+import exceptions.NoIdleServerAvailableException;
+import exceptions.WrongArgumentlistException;
 import utils.SocketConnection;
 
 public class Dispatcher extends Thread implements IDispatcherToClient,IDispatcherToMonitor,IDispatcherRequests {

@@ -1,4 +1,4 @@
-package distributedExtension;
+package exceptions;
 
 public class ServerNotReachableException extends Exception{
 

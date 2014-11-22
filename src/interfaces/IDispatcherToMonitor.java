@@ -1,9 +1,11 @@
-package distributedExtension;
+package interfaces;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Set;
+
+import exceptions.CouldNotStartServerException;
 
 public interface IDispatcherToMonitor {
 	/**Gibt eine List wieder die ID's enthaelt, mit denen in anderen Funktionen auf jeden Server speziell zugegriffen werden kann.

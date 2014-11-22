@@ -1,4 +1,4 @@
-package distributedExtension;
+package interfaces;
 
 import java.io.IOException;
 import java.net.InetAddress;

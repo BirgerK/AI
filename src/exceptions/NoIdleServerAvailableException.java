@@ -1,4 +1,4 @@
-package distributedExtension;
+package exceptions;
 
 public class NoIdleServerAvailableException extends Exception {
 

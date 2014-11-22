@@ -2,10 +2,12 @@ package distributedExtension;
 
 
 import static utils.Constants.*;
+import interfaces.IDispatcherRequests;
 
 import java.io.IOException;
 import java.net.InetAddress;
 
+import exceptions.ServerCommunicationException;
 import utils.SocketConnection;
 
 public class DispatcherRequestHandler extends Thread{

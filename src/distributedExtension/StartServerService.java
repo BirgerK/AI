@@ -1,6 +1,7 @@
 package distributedExtension;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 
 import utils.SocketConnection;
@@ -43,9 +44,13 @@ public class StartServerService {
 			case CMD_PING:
 				result = CMD_PONG;
 			case CMD_START_SERVER:
-				serverThread = new ServerThread(MPS_SERVER_THREAD_PORT);
-				serverThread.start();
-				result = ANSWER_DONE;
+				if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof InetAddress){
+					serverThread = new ServerThread(MPS_SERVER_THREAD_PORT,(InetAddress) incomingMessage.getArgumentList().get(0));
+					serverThread.start();
+					result = ANSWER_DONE;
+				} else {
+					result = new ResultMessage(new WrongArgumentlistException());
+				}
 			case CMD_STOP_SERVER:
 				if(serverThread != null & serverThread.isAlive()){
 					serverThread.destroy();

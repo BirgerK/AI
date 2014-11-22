@@ -26,7 +26,7 @@ import java.util.Set;
 
 import utils.SocketConnection;
 
-public class Dispatcher extends Thread implements IDispatcherToClient,IMonitoring,IDispatcherRequests {
+public class Dispatcher extends Thread implements IDispatcherToClient,IDispatcherToMonitor,IDispatcherRequests {
 	private SocketConnection socketToClient = null;
 	private static Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Status des Servers
 	private ServerSocket serverSocket = null;
@@ -98,7 +98,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IMonitorin
 	}
 
 	@Override
-	public void startServer(int id) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException {
+	public void startServer(int id,InetAddress monitorAddress) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException {
 		SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
 		
 		socketToServer.writeObject(new MethodInvokeMessage(CMD_START_SERVER, null));
@@ -167,6 +167,15 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IMonitorin
 		for(int key:allServer.keySet()){
 			if(getServerAddress(allServer.get(key)).equals(serverAddress)){ //Falls der zu aendernde Eintrag der jetzige Eintrag ist
 				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,STATUS_OFFLINE)));
+			}
+		}
+	}
+	
+	@Override
+	public void setServerStatus(InetAddress serverAddress,String serverStatus) {
+		for(int key:allServer.keySet()){
+			if(getServerAddress(allServer.get(key)).equals(serverAddress)){ //Falls der zu aendernde Eintrag der jetzige Eintrag ist
+				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,serverStatus)));
 			}
 		}
 	}

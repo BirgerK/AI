@@ -164,11 +164,12 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	
 	@Override
 	public void setServerStatusToOffline(InetAddress serverAddress) {
-		for(int key:allServer.keySet()){
-			if(getServerAddress(allServer.get(key)).equals(serverAddress)){ //Falls der zu aendernde Eintrag der jetzige Eintrag ist
-				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,STATUS_OFFLINE)));
-			}
-		}
+		setServerStatus(serverAddress, STATUS_OFFLINE);
+	}
+	
+	@Override
+	public void setServerStatusToIdle(InetAddress serverAddress) {
+		setServerStatus(serverAddress, STATUS_IDLE);
 	}
 	
 	@Override
@@ -189,7 +190,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	private String getServerStatus(List<Object> mapElement){
 		return (String) mapElement.get(1);
 	}
-	private synchronized void addSafeEntryAllServers(Object key,Object value){
+	private static synchronized void addSafeEntryAllServers(Object key,Object value){
 		allServer.put((Integer) key,(List<Object>) value);
 	}
 	

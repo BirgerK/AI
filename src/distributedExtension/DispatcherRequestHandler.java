@@ -31,6 +31,8 @@ public class DispatcherRequestHandler extends Thread{
 				try {
 					socketToServer.writeObject(messageToServer);
 					result = new ResultMessage(socketToServer.readObject());
+					//Anfrage komplett fertig bearbeitet, Server wird wieder freigegeben
+					myDispatcher.setServerStatusToIdle(serverForRequest);
 				} catch (Exception e) {
 					result = new ResultMessage(new ServerCommunicationException());
 				}
@@ -42,8 +44,11 @@ public class DispatcherRequestHandler extends Thread{
 		
 		try {
 			socketToClient.writeObject(result);
+			socketToClient.closeConnection();
 		} catch (IOException e) {
 			System.err.println("Dispatcher: Konnte Ergebnis nicht wieder an Client senden! Ergebnis wird verworfen. Moegliche Veraenderungen in der Persistenz bleiben bestehen!");
 		}
+		
+		
 	}
 }

@@ -13,5 +13,5 @@ public interface IDispatcherToClient{
 	 * @throws UnknownHostException 
 	 * @throws ClassNotFoundException 
 	 */
-	public void addServer(InetAddress serverAddresse) throws UnknownHostException, IOException, ClassNotFoundException;
+	public void addServer(InetAddress serverAddresse, int portNumber) throws UnknownHostException, IOException, ClassNotFoundException;
 }

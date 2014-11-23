@@ -27,14 +27,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import utils.SocketConnection;
 import exceptions.CouldNotStartServerException;
 import exceptions.NoIdleServerAvailableException;
 import exceptions.WrongArgumentlistException;
-import utils.SocketConnection;
 
 public class Dispatcher extends Thread implements IDispatcherToClient,IDispatcherToMonitor,IDispatcherRequests {
 	private SocketConnection socketToClient = null;
-	private static Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Status des Servers
+	private static Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Port des Servers, Element 2 ist immer derStatus des Servers
 	private ServerSocket serverSocket = null;
 	private boolean shutdown = false;
 	
@@ -53,8 +53,9 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 				socketToClient.setSocket(serverSocket.accept());
 				MethodInvokeMessage clientMessage = (MethodInvokeMessage) socketToClient.readObject();
 				if(clientMessage.getMethodToCall().equals(CMD_ADD_SERVER)){
-					if(clientMessage.getArgumentList().get(0) != null & clientMessage.getArgumentList().get(0) instanceof InetAddress){
-						this.addServer((InetAddress) clientMessage.getArgumentList().get(0));
+					if(clientMessage.getArgumentList().get(0) != null & clientMessage.getArgumentList().get(0) instanceof InetAddress &
+							clientMessage.getArgumentList().get(1) != null & clientMessage.getArgumentList().get(1) instanceof Integer){
+						this.addServer((InetAddress) clientMessage.getArgumentList().get(0),(int) clientMessage.getArgumentList().get(1));
 						socketToClient.writeObject(new ResultMessage(ANSWER_DONE));
 					}
 					socketToClient.writeObject(new ResultMessage(new WrongArgumentlistException()));
@@ -139,7 +140,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 
 
 	@Override
-	public void addServer(InetAddress serverAddresse) throws UnknownHostException, IOException, ClassNotFoundException {
+	public void addServer(InetAddress serverAddresse, int portNumber) throws UnknownHostException, IOException, ClassNotFoundException {
 		SocketConnection connectToServer = new SocketConnection(serverAddresse,START_SERVER_SERVICE_PORT);
 		
 		connectToServer.writeObject(new MethodInvokeMessage(CMD_PING,null));
@@ -151,17 +152,18 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	}
 
 	@Override
-	public synchronized InetAddress getIdleServerAddress() throws NoIdleServerAvailableException {
-		InetAddress result = null;
+	public synchronized List<Object> getIdleServerAddress() throws NoIdleServerAvailableException {
+		List<Object> result = new ArrayList<Object>();
 		for(int key:allServer.keySet()){
 			if(getServerStatus(allServer.get(key)).equals(STATUS_IDLE)){
-				result = getServerAddress(allServer.get(key));
+				result.add(getServerAddress(allServer.get(key)));
+				result.add(getServerPort(allServer.get(key)));
 				setServerStatusToBusy(key);
 				break;
 			}
 		}
 		
-		if(result == null){
+		if(result.isEmpty()){
 			throw new NoIdleServerAvailableException();
 		}
 		
@@ -193,8 +195,11 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	private InetAddress getServerAddress(List<Object> mapElement){
 		return (InetAddress) mapElement.get(0);
 	}
+	private int getServerPort(List<Object> mapElement){
+		return (int) mapElement.get(1);
+	}
 	private String getServerStatus(List<Object> mapElement){
-		return (String) mapElement.get(1);
+		return (String) mapElement.get(2);
 	}
 	private static synchronized void addSafeEntryAllServers(Object key,Object value){
 		allServer.put((Integer) key,(List<Object>) value);

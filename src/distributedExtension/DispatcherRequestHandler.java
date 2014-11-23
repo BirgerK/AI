@@ -1,14 +1,14 @@
 package distributedExtension;
 
 
-import static utils.Constants.*;
 import interfaces.IDispatcherRequests;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.List;
 
-import exceptions.ServerCommunicationException;
 import utils.SocketConnection;
+import exceptions.ServerCommunicationException;
 
 public class DispatcherRequestHandler extends Thread{
 	private SocketConnection socketToClient = null;
@@ -24,10 +24,13 @@ public class DispatcherRequestHandler extends Thread{
 	public void run(){
 		//Anfrage an den Server stellen
 		InetAddress serverForRequest;
+		int serverPortNumber;
 		ResultMessage result = null;
 		try {
-			serverForRequest = myDispatcher.getIdleServerAddress();
-			SocketConnection socketToServer = new SocketConnection(serverForRequest, MPS_SERVER_THREAD_PORT);
+			List<Object> idleServer = myDispatcher.getIdleServerAddress();
+			serverForRequest = (InetAddress) idleServer.get(0);
+			serverPortNumber = (int) idleServer.get(1);
+			SocketConnection socketToServer = new SocketConnection(serverForRequest, serverPortNumber);
 
 			if (socketToServer != null){	//Server ist also erreichbar
 				try {

@@ -43,7 +43,6 @@ public class Monitor extends Thread {
 			
 			//Gib den Status an die GUI weiter
 			gui.setStatusOfSelectedServer(statusOfSelectedServer);
-			System.out.println("Status: " + statusOfSelectedServer);
 			
 			//Bestimme die Anzahl der Idle und Busy Server
 			int idle = dispatcher.getAmountIdleServer();

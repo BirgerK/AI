@@ -57,9 +57,6 @@ public class DashboardGUI extends JFrame {
 		panel.add(btnStartServer);
 		
 		listOfAllServersListModel = new DefaultListModel<String>();
-		listOfAllServersListModel.addElement("1");
-		listOfAllServersListModel.addElement("2");
-		listOfAllServersListModel.addElement("3");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(33, 79, 112, 183);

@@ -15,7 +15,6 @@ public abstract class DispatcherClientMonitorMain {
 		//client.start();
 		monitor.start();
 		//hoffen dass es laeuft
-
 	}
 
 }

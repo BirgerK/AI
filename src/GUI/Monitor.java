@@ -45,6 +45,14 @@ public class Monitor extends Thread {
 			gui.setStatusOfSelectedServer(statusOfSelectedServer);
 			System.out.println("Status: " + statusOfSelectedServer);
 			
+			//Bestimme die Anzahl der Idle und Busy Server
+			int idle = dispatcher.getAmountIdleServer();
+			int busy = dispatcher.getAmountBusyServer();
+			
+			//Gib die Anzahlen an die GUI weiter
+			gui.setIdleAmount(idle);
+			gui.setBusyAmount(busy);
+			
 			//Messe Endzeit
 			endTime = System.currentTimeMillis();
 			
@@ -75,6 +83,18 @@ public class Monitor extends Thread {
 			dispatcher.startServer(newID, InetAddress.getLocalHost());
 		} catch (ClassNotFoundException | IOException
 				| CouldNotStartServerException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void killServer(int serverID) {
+		try {
+			dispatcher.stopServer(serverID);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (CouldNotStartServerException e) {
 			e.printStackTrace();
 		}
 	}

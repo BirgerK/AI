@@ -53,6 +53,10 @@ public class Client{
 	public Angebot erstelleAngebot(Map<Integer, Integer> matNrZuMenge,int kundenNr) throws Exception {
 		return (Angebot) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_ERSTELLE_ANGEBOT, new ArrayList<Object>(Arrays.asList(matNrZuMenge,kundenNr))));
 	}
+	
+	public void addServer(InetAddress serverAddresse, int portNumber) throws Exception{
+		sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_ADD_SERVER, new ArrayList<Object>(Arrays.asList(serverAddresse,portNumber))));
+	}
 
 	public void start() {
 		gui = new ClientGUI();

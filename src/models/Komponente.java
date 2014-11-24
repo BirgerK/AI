@@ -43,4 +43,8 @@ public class Komponente {
 	public String toString() {
 		return name;
 	}
+	
+	public int getKomponenteID() {
+		return komponenteId;
+	}
 }

@@ -5,8 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import models.Angebot;
 import models.Komponente;
 import Client.Client;
 
@@ -98,11 +99,24 @@ public class ClientGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(!kundennummerEingebefeld.getText().equals("") && !angebotListModel.isEmpty()) {
-					List<Komponente> komponenten = new ArrayList<Komponente>();
+					Map<Integer, Integer> komponenten = new HashMap<Integer, Integer>();
 					int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
 					
 					for(int i = 0; i < angebotListModel.getSize(); i++) {
-						komponenten.add(angebotListModel.getElementAt(i));
+						Komponente komponente = angebotListModel.get(i);
+						
+						if(komponenten.containsKey(komponente)) {
+							komponenten.put(komponente.getKomponenteID(), komponenten.get(komponente) + 1);
+						} else {
+							komponenten.put(komponente.getKomponenteID(), 1);
+						}
+					}
+					
+					try {
+						Angebot angebot = erstelleAngebot(komponenten, kundennummer);
+						angebotAbschicken(angebot);
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
 				}
 			}
@@ -190,5 +204,15 @@ public class ClientGUI extends JFrame {
 	
 	private void addServer(InetAddress address, int port) throws Exception {
 		client.addServer(address, port);
+	}
+	
+	private Angebot erstelleAngebot(Map<Integer, Integer> komponenten, int kundennummer) throws Exception {
+		return client.erstelleAngebot(komponenten, kundennummer);
+	}
+	
+	private void angebotAbschicken(Angebot angebot) throws Exception {
+		client.erstelleFertigungsauftrag(angebot);
+		client.erstelleKundenauftrag(angebot);
+		client.erstelleTransportauftrag(angebot);
 	}
 }

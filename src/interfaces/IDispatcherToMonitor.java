@@ -49,4 +49,6 @@ public interface IDispatcherToMonitor {
 	public void stopServer(int id) throws IOException, ClassNotFoundException, CouldNotStartServerException;
 	
 	public void setServerStatus(InetAddress serverAddress,String serverStatus);
+	
+	public void refreshStatus();
 }

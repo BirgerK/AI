@@ -214,6 +214,31 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	private void setServerStatusToBusy(int id){
 		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),getServerPort(allServer.get(id)),STATUS_BUSY))); //Sieht echt beknackt aus......
 	}
+	private void setServerStatusToOffline(int id){
+		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),getServerPort(allServer.get(id)),STATUS_OFFLINE))); //Sieht echt beknackt aus......
+	}
+
+	@Override
+	public void refreshStatus() {
+		SocketConnection socketToServer;
+		for(int id:allServer.keySet()){
+			try {
+				socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),getServerPort(allServer.get(id)));
+				socketToServer.writeObject(new MethodInvokeMessage(CMD_PING, null));
+				socketToServer.readObject();
+				socketToServer.closeConnection();
+				
+				setServerStatusToIdle(id);
+				
+			} catch (IOException e) {
+				System.err.println("Dispatcher: Server konnte nicht erreicht werden und wird daher auf offline gesetzt.");
+				setServerStatusToOffline(id);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
 	
 

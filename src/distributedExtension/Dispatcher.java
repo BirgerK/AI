@@ -57,8 +57,9 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 							clientMessage.getArgumentList().get(1) != null & clientMessage.getArgumentList().get(1) instanceof Integer){
 						this.addServer((InetAddress) clientMessage.getArgumentList().get(0),(int) clientMessage.getArgumentList().get(1));
 						socketToClient.writeObject(new ResultMessage(ANSWER_DONE));
+					} else {
+						socketToClient.writeObject(new ResultMessage(new WrongArgumentlistException()));
 					}
-					socketToClient.writeObject(new ResultMessage(new WrongArgumentlistException()));
 				} else {
 					new DispatcherRequestHandler(socketToClient, this, clientMessage).start();
 				}
@@ -147,7 +148,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 		ResultMessage resultMessage = (ResultMessage) connectToServer.readObject();
 		
 		if(resultMessage.getResult().equals(CMD_PONG)){
-			addSafeEntryAllServers(allServer.size()+1, new ArrayList<Object>(Arrays.asList(serverAddresse,STATUS_OFFLINE)));
+			addSafeEntryAllServers(allServer.size()+1, new ArrayList<Object>(Arrays.asList(serverAddresse,portNumber,STATUS_OFFLINE)));
 		}
 	}
 

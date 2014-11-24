@@ -75,11 +75,10 @@ public class Monitor extends Thread {
 		}
 	}
 	
-	public void startServer() {
-		int newID = findNewServerID();
+	public void startServer(int serverID) {
 		
 		try {
-			dispatcher.startServer(newID, InetAddress.getLocalHost());
+			dispatcher.startServer(serverID, InetAddress.getLocalHost());
 		} catch (ClassNotFoundException | IOException
 				| CouldNotStartServerException e) {
 			e.printStackTrace();

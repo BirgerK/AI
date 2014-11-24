@@ -68,6 +68,7 @@ public class Monitor extends Thread {
 					statusOfAllServers.put(serverID, dispatcher.statusOfServer(serverID));
 				} else if((status.equals("Busy") || status.equals("Idle")) && dispatcher.statusOfServer(serverID).equals("Offline")) {
 					gui.serverDied(serverID);
+					statusOfAllServers.put(serverID, dispatcher.statusOfServer(serverID));
 				} else {
 					statusOfAllServers.put(serverID, dispatcher.statusOfServer(serverID));
 				}

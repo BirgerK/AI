@@ -52,6 +52,9 @@ public class Monitor extends Thread {
 			gui.setIdleAmount(idle);
 			gui.setBusyAmount(busy);
 			
+			//Setze den Dispatcherstatus in der GUI
+			gui.setDispatcherStatus(dispatcher.isAlive());
+			
 			//Messe Endzeit
 			endTime = System.currentTimeMillis();
 			

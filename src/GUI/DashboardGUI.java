@@ -30,6 +30,7 @@ public class DashboardGUI extends JFrame {
 	JTextPane idleTextPane;
 	JTextPane busyTextPane;
 	private JTextField txtAvailableServers;
+	private JTextField dispatcherStatusTextField;
 	
 	public DashboardGUI(Monitor monitor) {
 		super("Dashboard");
@@ -105,13 +106,19 @@ public class DashboardGUI extends JFrame {
 		
 		idleTextPane = new JTextPane();
 		idleTextPane.setEditable(false);
-		idleTextPane.setBounds(180, 239, 87, 23);
+		idleTextPane.setBounds(155, 130, 87, 23);
 		panel.add(idleTextPane);
 		
 		busyTextPane = new JTextPane();
 		busyTextPane.setEditable(false);
-		busyTextPane.setBounds(288, 239, 87, 23);
+		busyTextPane.setBounds(302, 130, 87, 23);
 		panel.add(busyTextPane);
+		
+		dispatcherStatusTextField = new JTextField();
+		dispatcherStatusTextField.setEditable(false);
+		dispatcherStatusTextField.setBounds(156, 242, 86, 20);
+		panel.add(dispatcherStatusTextField);
+		dispatcherStatusTextField.setColumns(10);
 		setVisible(true);
 		
 	}
@@ -138,6 +145,14 @@ public class DashboardGUI extends JFrame {
 	
 	public void setBusyAmount(int noOfBusyServers) {
 		busyTextPane.setText("Busy: " + noOfBusyServers);
+	}
+	
+	public void setDispatcherStatus(boolean alive) {
+		if(alive) {
+			dispatcherStatusTextField.setText("Dispatcher Status: Alive");
+		} else {
+			dispatcherStatusTextField.setText("Dispatcher Status: Dead");
+		}
 	}
 	
 	public void setStatusOfSelectedServer(String status) {

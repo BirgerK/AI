@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JTextField;
 
 public class DashboardGUI extends JFrame {
 	Monitor monitor;
@@ -28,9 +29,11 @@ public class DashboardGUI extends JFrame {
 	JTextPane selectedServerStatusPane;
 	JTextPane idleTextPane;
 	JTextPane busyTextPane;
+	private JTextField txtAvailableServers;
 	
 	public DashboardGUI(Monitor monitor) {
 		super("Dashboard");
+		setResizable(false);
 		
 		this.monitor = monitor;
 		
@@ -72,6 +75,12 @@ public class DashboardGUI extends JFrame {
 			}
 		});
 		listOfAllServers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		txtAvailableServers = new JTextField();
+		txtAvailableServers.setEditable(false);
+		txtAvailableServers.setText("Available Servers");
+		scrollPane.setColumnHeaderView(txtAvailableServers);
+		txtAvailableServers.setColumns(10);
 		
 		JTextPane txtpnSelectedServerStatus = new JTextPane();
 		txtpnSelectedServerStatus.setEditable(false);

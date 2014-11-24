@@ -1,72 +1,76 @@
 package Client;
 
-import interfaces.IDispatcherToClient;
+import static utils.Constants.*;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import models.Angebot;
 import models.Fertigungsauftrag;
 import models.Kundenauftrag;
 import models.Transportauftrag;
+import utils.SocketConnection;
 import GUI.ClientGUI;
 import bossKomponente.IMPS;
-import utils.*;
-import distributedExtension.*;
+import distributedExtension.MethodInvokeMessage;
+import distributedExtension.ResultMessage;
 
-public class Client implements IMPS {
+public class Client{
 	
-	private IDispatcherToClient dispatcher = null;
+	private InetAddress dispatcherAddress = null;
 	private ClientGUI gui;
 	
 	//Socket aufbauen
-	public Client(IDispatcherToClient dispatcher) throws UnknownHostException, IOException{
-		this.dispatcher = dispatcher;
+	public Client(InetAddress dispatcherAddress) throws UnknownHostException, IOException{
+		this.dispatcherAddress = dispatcherAddress;
 	}
 
-	@Override
-	public Date berechneFertigungszeitpunkt(int fertigungsAuftragId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Date berechneFertigungszeitpunkt(int fertigungsAuftragId) throws Exception {
+		return (Date) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_BERECHNE_FERTIGUNGSZEIT, new ArrayList<Object>(Arrays.asList(fertigungsAuftragId))));
 	}
 
-	@Override
-	public Fertigungsauftrag erstelleFertigungsauftrag(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return null;
+	public Fertigungsauftrag erstelleFertigungsauftrag(Angebot angebot) throws Exception {
+		return (Fertigungsauftrag) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_ERSTELLE_FERTIGUNGSAUFTRAG, new ArrayList<Object>(Arrays.asList(angebot))));
 	}
 
-	@Override
-	public Transportauftrag erstelleTransportauftrag(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return null;
+	public Transportauftrag erstelleTransportauftrag(Angebot angebot) throws Exception {
+		return (Transportauftrag) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_ERSTELLE_TRANSPORTAUFTRAG, new ArrayList<Object>(Arrays.asList(angebot))));
 	}
 
-	@Override
-	public Kundenauftrag erstelleKundenauftrag(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return null;
+	public Kundenauftrag erstelleKundenauftrag(Angebot angebot) throws Exception {
+		return (Kundenauftrag) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_ERSTELLE_KUNDENAUFTRAG, new ArrayList<Object>(Arrays.asList(angebot))));
 	}
 
-	@Override
-	public double berechneKosten(Angebot angebot) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double berechneKosten(Angebot angebot) throws Exception {
+		return (double) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_BERECHNE_KOSTEN, new ArrayList<Object>(Arrays.asList(angebot))));
 	}
 
-	@Override
-	public Angebot erstelleAngebot(Map<Integer, Integer> matNrZuMenge,
-			int kundenNr) {
-		// TODO Auto-generated method stub
-		return null;
+	public Angebot erstelleAngebot(Map<Integer, Integer> matNrZuMenge,int kundenNr) throws Exception {
+		return (Angebot) sendRequestToServerAndGetAnswer(new MethodInvokeMessage(CMD_ERSTELLE_ANGEBOT, new ArrayList<Object>(Arrays.asList(matNrZuMenge,kundenNr))));
 	}
 
 	public void start() {
 		gui = new ClientGUI();
+	}
+	
+	private Object sendRequestToServerAndGetAnswer(MethodInvokeMessage messageToSend) throws Exception{
+
+		SocketConnection socketToDispatcher = new SocketConnection(dispatcherAddress,MPS_DISPATCHER_PORT);
+		
+		socketToDispatcher.writeObject(messageToSend);
+		ResultMessage resultMessage = (ResultMessage) socketToDispatcher.readObject();
+		socketToDispatcher.closeConnection();	
+		
+		Object result = resultMessage.getResult();
+		if(resultMessage.isResultException()){
+			throw (Exception) result;
+		}
+		return result;		
+
 	}
 }

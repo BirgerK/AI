@@ -63,17 +63,33 @@ public class Client{
 	}
 	
 	private Object sendRequestToServerAndGetAnswer(MethodInvokeMessage messageToSend) throws Exception{
-
-		SocketConnection socketToDispatcher = new SocketConnection(dispatcherAddress,MPS_DISPATCHER_PORT);
-		
-		socketToDispatcher.writeObject(messageToSend);
-		ResultMessage resultMessage = (ResultMessage) socketToDispatcher.readObject();
-		socketToDispatcher.closeConnection();	
-		
-		Object result = resultMessage.getResult();
-		if(resultMessage.isResultException()){
-			throw (Exception) result;
+		Object result = null;
+		SocketConnection socketToDispatcher;
+		int counter = 0;
+		while(counter < CLIENT_MAX_RETRIES){
+			try {
+				socketToDispatcher = new SocketConnection(dispatcherAddress,MPS_DISPATCHER_PORT);
+				socketToDispatcher.writeObject(messageToSend);
+				ResultMessage resultMessage = (ResultMessage) socketToDispatcher.readObject();
+				socketToDispatcher.closeConnection();	
+				
+				result = resultMessage.getResult();
+				if(resultMessage.isResultException()){
+					throw (Exception) result;
+				}
+			} catch (UnknownHostException e) {
+				System.err.println("Client: Verbindung zum Server konnte aufgrund eines falschen Hostnamen nicht aufgebaut werden.");
+				counter = CLIENT_MAX_RETRIES + 1;
+			} catch (IOException e) {
+				System.err.println("Client: Fehler waehrend Senden an Server. Versuch:" + counter++ + ", es wird erneut versucht.");
+				Thread.sleep(CLIENT_WAITTIME_BETWEEN_RETRIES);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+		
 		return result;		
 
 	}

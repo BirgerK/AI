@@ -8,6 +8,8 @@ public abstract class Constants {
 	
 	public static final int MPS_SERVER_SOCKET_TIMEOUT = 400;	//in ms
 	public static final int MPS_MONITOR_CHECK_TIME = 500;	//in ms
+	public static final int CLIENT_MAX_RETRIES = 3;
+	public static final int CLIENT_WAITTIME_BETWEEN_RETRIES = 100;	//in ms
 	
 	public static final String CMD_ERSTELLE_KUNDENAUFTRAG = "erstelleKundenAuftrag";
 	public static final String CMD_BERECHNE_FERTIGUNGSZEIT = "berechneFertigungszeitpunkt";

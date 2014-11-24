@@ -31,6 +31,7 @@ public class DashboardGUI extends JFrame {
 	
 	public DashboardGUI(Monitor monitor) {
 		super("Dashboard");
+		setResizable(false);
 		
 		this.monitor = monitor;
 		

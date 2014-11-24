@@ -73,30 +73,35 @@ public class ServerThread extends Thread {
 						} else {
 							result = new WrongArgumentlistException();
 						}
+						break;
 					case CMD_BERECHNE_FERTIGUNGSZEIT:
 						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer){
 							result = mps.berechneFertigungszeitpunkt((int) incomingMessage.getArgumentList().get(0));
 						} else {
 							result = new WrongArgumentlistException();
 						}
+						break;
 					case CMD_ERSTELLE_FERTIGUNGSAUFTRAG:
 						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 							result = mps.erstelleFertigungsauftrag((Angebot) incomingMessage.getArgumentList().get(0));
 						} else {
 							result = new WrongArgumentlistException();
 						}
+						break;
 					case CMD_ERSTELLE_TRANSPORTAUFTRAG:
 						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 							result = mps.erstelleTransportauftrag((Angebot) incomingMessage.getArgumentList().get(0));
 						} else {
 							result = new WrongArgumentlistException();
 						}
+						break;
 					case CMD_BERECHNE_KOSTEN:
 						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Angebot){
 							result = mps.berechneKosten((Angebot) incomingMessage.getArgumentList().get(0));
 						} else {
 							result = new WrongArgumentlistException();
 						}
+						break;
 					case CMD_ERSTELLE_ANGEBOT:
 						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Map &
 								incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof Integer){
@@ -104,8 +109,10 @@ public class ServerThread extends Thread {
 						} else {
 							result = new WrongArgumentlistException();
 						}
+						break;
 					case CMD_PING:
 						result = CMD_PONG;
+						break;
 					default:
 						result = new MethodNotAvailableException();
 				}

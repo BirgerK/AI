@@ -1,6 +1,12 @@
 package distributedExtension;
 
-public class ResultMessage {
+import java.io.Serializable;
+
+public class ResultMessage implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Object result = null;
 	
 	public ResultMessage(Object result){

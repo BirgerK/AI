@@ -18,11 +18,12 @@ public abstract class DispatcherClientMonitorMain {
 		monitor = new Monitor(dispatcher);
 		
 		
-		//StartServerService.main(null);
+		
 		dispatcher.start();
 		client.start();
 		monitor.start();
 		//hoffen dass es laeuft
+		StartServerService.main(null);
 	}
 
 }

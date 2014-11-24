@@ -51,54 +51,56 @@ public class StartServerService {
 			} catch (Exception e) {
 				System.err.println("Fehler bei Empfangen von Message-Objekt.");
 			} 
-			
-			switch(incomingMessage.getMethodToCall()){
-			case CMD_PING:
-				result = CMD_PONG;
-			case CMD_START_SERVER:
-				if(incomingMessage.getArgumentList().size() == 1){
-					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof InetAddress){
-						serverThread = new ServerThread(MPS_SERVER_THREAD_PORT,(InetAddress) incomingMessage.getArgumentList().get(0));
-						serverThread.start();
-						result = ANSWER_DONE;
+			if(incomingMessage != null){
+				switch(incomingMessage.getMethodToCall()){
+				case CMD_PING:
+					result = CMD_PONG;
+					break;
+				case CMD_START_SERVER:
+					if(incomingMessage.getArgumentList().size() == 1){
+						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof InetAddress){
+							serverThread = new ServerThread(MPS_SERVER_THREAD_PORT,(InetAddress) incomingMessage.getArgumentList().get(0));
+							serverThread.start();
+							result = ANSWER_DONE;
+						} else {
+							result = new ResultMessage(new WrongArgumentlistException());
+						}
 					} else {
-						result = new ResultMessage(new WrongArgumentlistException());
+						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer &
+							incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof InetAddress) {
+							serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(1),(InetAddress) incomingMessage.getArgumentList().get(0));
+							serverThread.start();
+							serverThreads.put((int) incomingMessage.getArgumentList().get(1), serverThread);
+							result = ANSWER_DONE;
+						} else {
+							result = new ResultMessage(new WrongArgumentlistException());
+						}
 					}
-				} else {
+					break;
+				case CMD_STOP_SERVER:
 					if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer &
-						incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof InetAddress) {
-						serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(1),(InetAddress) incomingMessage.getArgumentList().get(0));
-						serverThread.start();
-						serverThreads.put((int) incomingMessage.getArgumentList().get(1), serverThread);
-						result = ANSWER_DONE;
-					} else {
-						result = new ResultMessage(new WrongArgumentlistException());
+					serverThread != null & serverThread.isAlive()){
+						serverThreads.get(incomingMessage.getArgumentList().get(0)).destroy();
 					}
+					result = ANSWER_DONE;
 				}
-			case CMD_STOP_SERVER:
-				if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer &
-				serverThread != null & serverThread.isAlive()){
-					serverThreads.get(incomingMessage.getArgumentList().get(0)).destroy();
-				}
-				result = ANSWER_DONE;
-			}
-			
-			if(result != null){	//Falls eine Operation ausgefuehrt wurde, gibt es auch ein Ergebnis und dann wird es versendet
-				try {
-					socket.writeObject(new ResultMessage(result));
-				} catch (IOException e) {
-					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
-				}
-			} else {	//Ansonsten Nachricht an den Dispatcher, dass Aufgabe fertig ist
-				try {
-					socket.writeObject(new ResultMessage(ANSWER_DONE));
-				} catch (IOException e) {
-					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
+				
+				if(result != null){	//Falls eine Operation ausgefuehrt wurde, gibt es auch ein Ergebnis und dann wird es versendet
+					try {
+						socket.writeObject(new ResultMessage(result));
+						socket.closeConnection();
+					} catch (IOException e) {
+						System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
+					}
+				} else {	//Ansonsten Nachricht an den Dispatcher, dass Aufgabe fertig ist
+					try {
+						socket.writeObject(new ResultMessage(ANSWER_DONE));
+						socket.closeConnection();
+					} catch (IOException e) {
+						System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
+					}
 				}
 			}
 		}
-		
-		
 	}
-
 }

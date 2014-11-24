@@ -1,8 +1,13 @@
 package distributedExtension;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MethodInvokeMessage {
+public class MethodInvokeMessage implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String methodToCall = null;
 	private List<Object> argumentList = null;
 	

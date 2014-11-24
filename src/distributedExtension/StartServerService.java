@@ -68,7 +68,7 @@ public class StartServerService {
 					} else {
 						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer &
 							incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof InetAddress) {
-							serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(1),(InetAddress) incomingMessage.getArgumentList().get(0));
+							serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(0),(InetAddress) incomingMessage.getArgumentList().get(1));
 							serverThread.start();
 							serverThreads.put((int) incomingMessage.getArgumentList().get(1), serverThread);
 							result = ANSWER_DONE;
@@ -102,5 +102,6 @@ public class StartServerService {
 				}
 			}
 		}
+		System.out.println("StartServerService wird heruntergefahren.");
 	}
 }

@@ -36,6 +36,9 @@ public class ClientGUI extends JFrame {
 		
 		this.client = client;
 		
+		setSize(428, 310);
+		setLocation(300, 300);
+		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);

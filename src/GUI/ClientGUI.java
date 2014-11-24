@@ -28,14 +28,14 @@ public class ClientGUI extends JFrame {
 		panel.setLayout(null);
 		
 		kundennummerEingebefeld = new JTextField();
-		kundennummerEingebefeld.setBounds(127, 11, 157, 20);
+		kundennummerEingebefeld.setBounds(10, 384, 157, 20);
 		panel.add(kundennummerEingebefeld);
 		kundennummerEingebefeld.setColumns(10);
 		
-		JTextPane kundennummerTextfeld = new JTextPane();
+		JTextField kundennummerTextfeld = new JTextField();
 		kundennummerTextfeld.setEditable(false);
 		kundennummerTextfeld.setText("Kundennummer");
-		kundennummerTextfeld.setBounds(10, 11, 107, 20);
+		kundennummerTextfeld.setBounds(10, 356, 107, 20);
 		panel.add(kundennummerTextfeld);
 		
 		JScrollPane komponentenAuswahlScrollPane = new JScrollPane();
@@ -69,8 +69,12 @@ public class ClientGUI extends JFrame {
 		angebotScollPane.setColumnHeaderView(angebotListTitle);
 		angebotListTitle.setColumns(10);
 		
-		JButton btnAngebotErstellen = new JButton("Angebot erstellen");
-		btnAngebotErstellen.setBounds(294, 10, 117, 23);
-		panel.add(btnAngebotErstellen);
+		JButton erstelleAngebotButton = new JButton("Angebot erstellen");
+		erstelleAngebotButton.setBounds(191, 11, 117, 23);
+		panel.add(erstelleAngebotButton);
+		
+		JButton komponenteZuAngebotButton = new JButton("Hinzufuegen");
+		komponenteZuAngebotButton.setBounds(10, 11, 107, 23);
+		panel.add(komponenteZuAngebotButton);
 	}
 }

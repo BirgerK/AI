@@ -22,7 +22,7 @@ public class Verkaufsverwalter {
 	}
 	
 	
-	public Komponente getFertigungsZeitpunkt(int komponentenId){
+	public Komponente getKomponenteById(int komponentenId){
 		return (Komponente) loadObject(Komponente.class, komponentenId);
 	}
 }

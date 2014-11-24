@@ -117,22 +117,22 @@ public class ServerThread extends Thread {
 						result = new MethodNotAvailableException();
 				}
 				
-//				try {
-//					socketToClient.writeObject(new ResultMessage(result));
-//					socketToClient.closeConnection();
-//				} catch (IOException e) {
-//					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
-//				}
+				try {
+					socketToClient.writeObject(new ResultMessage(result));
+					socketToClient.closeConnection();
+				} catch (IOException e) {
+					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
+				}
 			}
 			
-			//Dem Monitor melden, dass der Server noch lebt
-			try {
-				SocketConnection socketToMonitor = new SocketConnection(monitorAddress, MPS_MONITOR_PORT);
-				socketToMonitor.writeObject(new MethodInvokeMessage(CMD_IAMALIVE, null));
-				socketToMonitor.closeConnection();
-			} catch (Exception e) {
-				System.err.println("MPS-Server: Fehler waehrend Melden am Monitor.");
-			}
+//			//Dem Monitor melden, dass der Server noch lebt
+//			try {
+//				SocketConnection socketToMonitor = new SocketConnection(monitorAddress, MPS_MONITOR_PORT);
+//				socketToMonitor.writeObject(new MethodInvokeMessage(CMD_IAMALIVE, null));
+//				socketToMonitor.closeConnection();
+//			} catch (Exception e) {
+//				System.err.println("MPS-Server: Fehler waehrend Melden am Monitor.");
+//			}
 		}
 	}
 	

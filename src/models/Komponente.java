@@ -21,6 +21,8 @@ public class Komponente {
 	@ManyToMany(mappedBy="komponenten")
 	Set<Angebot> angebote= new HashSet<Angebot>();
 	
+	public Komponente(){}
+	
 	public Komponente(String name,int anzahl,int dauer,int fertigungsKosten){
 		this.name = name;
 		this.anzahl = anzahl;

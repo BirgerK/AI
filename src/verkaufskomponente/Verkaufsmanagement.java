@@ -25,7 +25,7 @@ public class Verkaufsmanagement implements IVerkauf{
 	public Angebot erstelleAngebot(Map<Integer, Integer> matNrZuMenge,int kundenNr) {
 		Set<Komponente> komponenten = new HashSet<Komponente>();
 		for(int komponentenId:matNrZuMenge.keySet()){
-			komponenten.add(verwalter.getFertigungsZeitpunkt(komponentenId));
+			komponenten.add(verwalter.getKomponenteById(komponentenId));
 		}
 		return verwalter.erstelleAngebot(komponenten,kundenNr);
 	}

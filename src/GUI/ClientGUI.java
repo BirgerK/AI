@@ -32,10 +32,9 @@ public class ClientGUI extends JFrame {
 	
 	public ClientGUI(Client client) {
 		super("Client");
+		setResizable(false);
 		
 		this.client = client;
-		
-		setResizable(false);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);

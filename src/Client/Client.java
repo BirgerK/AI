@@ -27,6 +27,7 @@ public class Client{
 	
 	//Socket aufbauen
 	public Client(InetAddress dispatcherAddress) throws UnknownHostException, IOException{
+		gui = new ClientGUI(this);
 		this.dispatcherAddress = dispatcherAddress;
 	}
 
@@ -59,7 +60,6 @@ public class Client{
 	}
 
 	public void start() {
-		gui = new ClientGUI(this);
 	}
 	
 	private Object sendRequestToServerAndGetAnswer(MethodInvokeMessage messageToSend) throws Exception{

@@ -16,7 +16,7 @@ public class Client {
 	private IDispatcherToClient dispatcher = null;
 	
 	//Socket aufbauen
-	private void Client(IDispatcherToClient dispatcher) throws UnknownHostException, IOException{
+	public Client(IDispatcherToClient dispatcher) throws UnknownHostException, IOException{
 		this.dispatcher = dispatcher;
 	}
 

@@ -11,9 +11,11 @@ import javax.swing.JTextPane;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
+import models.Komponente;
+
 public class ClientGUI extends JFrame {
 	private JTextField kundennummerEingebefeld;
-	private DefaultListModel<String> komponentenListModel;
+	private DefaultListModel<Komponente> komponentenListModel;
 	
 	public ClientGUI() {
 		setTitle("Client");
@@ -38,7 +40,13 @@ public class ClientGUI extends JFrame {
 		scrollPane.setBounds(10, 57, 107, 287);
 		panel.add(scrollPane);
 		
-		JList komponentenListBody = new JList();
+		komponentenListModel = new DefaultListModel<Komponente>();
+		komponentenListModel.addElement(new Komponente("Schraube", 1, 5, 2));
+		komponentenListModel.addElement(new Komponente("Brett", 1, 10, 4));
+		komponentenListModel.addElement(new Komponente("Nasenbohrer", 1, 20, 100));
+		komponentenListModel.addElement(new Komponente("Gartenlaube", 1, 100, 350));
+		
+		JList komponentenListBody = new JList(komponentenListModel);
 		scrollPane.setViewportView(komponentenListBody);
 		
 		JTextPane komponentenListTitle = new JTextPane();

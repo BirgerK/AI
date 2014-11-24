@@ -165,7 +165,7 @@ public class ClientGUI extends JFrame {
 						e.printStackTrace();
 					}
 					
-					serverAddresseEingabefeld.setText("");
+					//serverAddresseEingabefeld.setText("");
 					portEingabefeld.setText("");
 				}
 			}

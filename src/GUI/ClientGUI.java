@@ -16,6 +16,7 @@ import models.Komponente;
 public class ClientGUI extends JFrame {
 	private JTextField kundennummerEingebefeld;
 	private DefaultListModel<Komponente> komponentenListModel;
+	private JTextField angebotListTitle;
 	
 	public ClientGUI() {
 		setTitle("Client");
@@ -36,9 +37,9 @@ public class ClientGUI extends JFrame {
 		kundennummerTextfeld.setBounds(10, 11, 107, 20);
 		panel.add(kundennummerTextfeld);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 57, 107, 287);
-		panel.add(scrollPane);
+		JScrollPane komponentenAuswahlScrollPane = new JScrollPane();
+		komponentenAuswahlScrollPane.setBounds(10, 57, 107, 287);
+		panel.add(komponentenAuswahlScrollPane);
 		
 		komponentenListModel = new DefaultListModel<Komponente>();
 		komponentenListModel.addElement(new Komponente("Schraube", 1, 5, 2));
@@ -47,11 +48,24 @@ public class ClientGUI extends JFrame {
 		komponentenListModel.addElement(new Komponente("Gartenlaube", 1, 100, 350));
 		
 		JList komponentenListBody = new JList(komponentenListModel);
-		scrollPane.setViewportView(komponentenListBody);
+		komponentenAuswahlScrollPane.setViewportView(komponentenListBody);
 		
 		JTextPane komponentenListTitle = new JTextPane();
 		komponentenListTitle.setEditable(false);
 		komponentenListTitle.setText("Komponenten");
-		scrollPane.setColumnHeaderView(komponentenListTitle);
+		komponentenAuswahlScrollPane.setColumnHeaderView(komponentenListTitle);
+		
+		JScrollPane angebotScollPane = new JScrollPane();
+		angebotScollPane.setBounds(191, 57, 107, 287);
+		panel.add(angebotScollPane);
+		
+		JList angebotListBody = new JList();
+		angebotScollPane.setViewportView(angebotListBody);
+		
+		angebotListTitle = new JTextField();
+		angebotListTitle.setEditable(false);
+		angebotListTitle.setText("Angebotsinhalt");
+		angebotScollPane.setColumnHeaderView(angebotListTitle);
+		angebotListTitle.setColumns(10);
 	}
 }

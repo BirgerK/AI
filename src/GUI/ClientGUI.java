@@ -147,24 +147,24 @@ public class ClientGUI extends JFrame {
 		serverAddresseTitel = new JTextField();
 		serverAddresseTitel.setEditable(false);
 		serverAddresseTitel.setText("Server Addresse");
-		serverAddresseTitel.setBounds(10, 453, 91, 20);
+		serverAddresseTitel.setBounds(10, 453, 107, 20);
 		panel.add(serverAddresseTitel);
 		serverAddresseTitel.setColumns(10);
 		
 		portTitel = new JTextField();
 		portTitel.setText("Port");
 		portTitel.setEditable(false);
-		portTitel.setBounds(10, 484, 91, 20);
+		portTitel.setBounds(10, 484, 107, 20);
 		panel.add(portTitel);
 		portTitel.setColumns(10);
 		
 		serverAddresseEingabefeld = new JTextField();
-		serverAddresseEingabefeld.setBounds(111, 453, 117, 20);
+		serverAddresseEingabefeld.setBounds(132, 453, 107, 20);
 		panel.add(serverAddresseEingabefeld);
 		serverAddresseEingabefeld.setColumns(10);
 		
 		portEingabefeld = new JTextField();
-		portEingabefeld.setBounds(111, 484, 117, 20);
+		portEingabefeld.setBounds(132, 484, 107, 20);
 		panel.add(portEingabefeld);
 		portEingabefeld.setColumns(10);
 		
@@ -194,7 +194,7 @@ public class ClientGUI extends JFrame {
 				}
 			}
 		});
-		serverHinzufuegenButton.setBounds(238, 452, 138, 23);
+		serverHinzufuegenButton.setBounds(249, 452, 127, 23);
 		panel.add(serverHinzufuegenButton);
 		
 		entfernenButton = new JButton("Entfernen");

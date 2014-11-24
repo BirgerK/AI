@@ -9,17 +9,22 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.JTextPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JTextField;
 
 public class DashboardGUI extends JFrame {
@@ -176,5 +181,9 @@ public class DashboardGUI extends JFrame {
 		} else {
 			listOfAllServers.setSelectedIndex(listOfAllServersListModel.getSize() - 1);
 		}
+	}
+	
+	synchronized public void serverDied(int serverID) {
+		JOptionPane.showInputDialog("Sir, Server " + serverID + " just died");
 	}
 }

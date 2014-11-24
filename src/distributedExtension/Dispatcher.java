@@ -108,7 +108,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	public void startServer(int id,InetAddress monitorAddress) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException {
 		SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
 		
-		socketToServer.writeObject(new MethodInvokeMessage(CMD_START_SERVER, null));
+		socketToServer.writeObject(new MethodInvokeMessage(CMD_START_SERVER, new ArrayList<Object>(Arrays.asList(id,monitorAddress))));
 		ResultMessage answerFromServer = (ResultMessage) socketToServer.readObject();
 		if(answerFromServer.getResult().equals(ANSWER_DONE)){
 			setServerStatusToIdle(id);
@@ -121,7 +121,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	public void stopServer(int id) throws IOException, ClassNotFoundException, CouldNotStartServerException {
 		SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),MPS_SERVER_THREAD_PORT);
 		
-		socketToServer.writeObject(new MethodInvokeMessage(CMD_STOP_SERVER, null));
+		socketToServer.writeObject(new MethodInvokeMessage(CMD_STOP_SERVER, new ArrayList<Object>(Arrays.asList(getServerPort(allServer.get(id))))));
 		ResultMessage answerFromServer = (ResultMessage) socketToServer.readObject();
 		if(answerFromServer.getResult().equals(ANSWER_DONE)){
 			setServerStatusToIdle(id);

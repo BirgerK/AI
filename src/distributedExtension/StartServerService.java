@@ -11,6 +11,9 @@ import static utils.Constants.START_SERVER_SERVICE_PORT;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import utils.SocketConnection;
 import exceptions.WrongArgumentlistException;
@@ -22,6 +25,7 @@ public class StartServerService {
 	private static SocketConnection socket = null;
 	private static ServerThread serverThread = null;
 	private static boolean shutdown = false;
+	private static Map<Integer,Thread> serverThreads = Collections.synchronizedMap(new HashMap<Integer,Thread>());
 	
 	public static void main(String[] args) {
 		try {
@@ -65,14 +69,16 @@ public class StartServerService {
 						incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof InetAddress) {
 						serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(1),(InetAddress) incomingMessage.getArgumentList().get(0));
 						serverThread.start();
+						serverThreads.put((int) incomingMessage.getArgumentList().get(1), serverThread);
 						result = ANSWER_DONE;
 					} else {
 						result = new ResultMessage(new WrongArgumentlistException());
 					}
 				}
 			case CMD_STOP_SERVER:
-				if(serverThread != null & serverThread.isAlive()){
-					serverThread.destroy();
+				if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer &
+				serverThread != null & serverThread.isAlive()){
+					serverThreads.get(incomingMessage.getArgumentList().get(0)).destroy();
 				}
 				result = ANSWER_DONE;
 			}

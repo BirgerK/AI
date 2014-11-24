@@ -3,6 +3,8 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -126,9 +128,35 @@ public class ClientGUI extends JFrame {
 		portEingabefeld.setColumns(10);
 		
 		JButton serverHinzufuegenButton = new JButton("Server Hinzufuegen");
+		serverHinzufuegenButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(!serverAddresseEingabefeld.getText().equals("") && !portEingabefeld.getText().equals("")) {
+					InetAddress address;
+					
+					try {
+						address = InetAddress.getByName(serverAddresseEingabefeld.getText());
+					} catch (UnknownHostException e1) {
+						e1.printStackTrace();
+					}
+					
+					int port = Integer.parseInt(portEingabefeld.getText());
+					
+					try {
+						addServer(address, port);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 		serverHinzufuegenButton.setBounds(238, 452, 138, 23);
 		panel.add(serverHinzufuegenButton);
 		
 		setVisible(true);
+	}
+	
+	private void addServer(InetAddress address, int port) throws Exception {
+		client.addServer(address, port);
 	}
 }

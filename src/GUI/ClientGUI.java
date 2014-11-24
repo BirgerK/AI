@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import models.Angebot;
 import models.Komponente;
 import Client.Client;
 
@@ -102,7 +103,7 @@ public class ClientGUI extends JFrame {
 					int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
 					
 					for(int i = 0; i < angebotListModel.getSize(); i++) {
-						Komponente komponente = angebotListBody.getSelectedValue();
+						Komponente komponente = angebotListModel.get(i);
 						
 						if(komponenten.containsKey(komponente)) {
 							komponenten.put(komponente.getKomponenteID(), komponenten.get(komponente) + 1);
@@ -112,7 +113,8 @@ public class ClientGUI extends JFrame {
 					}
 					
 					try {
-						erstelleAngebot(komponenten, kundennummer);
+						Angebot angebot = erstelleAngebot(komponenten, kundennummer);
+						angebotAbschicken(angebot);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -204,7 +206,13 @@ public class ClientGUI extends JFrame {
 		client.addServer(address, port);
 	}
 	
-	private void erstelleAngebot(Map<Integer, Integer> komponenten, int kundennummer) throws Exception {
-		client.erstelleAngebot(komponenten, kundennummer);
+	private Angebot erstelleAngebot(Map<Integer, Integer> komponenten, int kundennummer) throws Exception {
+		return client.erstelleAngebot(komponenten, kundennummer);
+	}
+	
+	private void angebotAbschicken(Angebot angebot) throws Exception {
+		client.erstelleFertigungsauftrag(angebot);
+		client.erstelleKundenauftrag(angebot);
+		client.erstelleTransportauftrag(angebot);
 	}
 }

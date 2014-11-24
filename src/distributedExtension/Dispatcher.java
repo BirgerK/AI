@@ -34,7 +34,7 @@ import exceptions.WrongArgumentlistException;
 
 public class Dispatcher extends Thread implements IDispatcherToClient,IDispatcherToMonitor,IDispatcherRequests {
 	private SocketConnection socketToClient = null;
-	private static Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Port des Servers, Element 2 ist immer derStatus des Servers
+	private static Map<Integer,List<Object>> allServer = null; // Element 0 der List ist immer die ServerAdresse, Element 1 ist immer der Port des Servers, Element 2 ist immer der Status des Servers
 	private ServerSocket serverSocket = null;
 	private boolean shutdown = false;
 	
@@ -109,7 +109,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	public void startServer(int id,InetAddress monitorAddress) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException {
 		SocketConnection socketToServer = new SocketConnection(getServerAddress(allServer.get(id)),START_SERVER_SERVICE_PORT);
 		
-		socketToServer.writeObject(new MethodInvokeMessage(CMD_START_SERVER, new ArrayList<Object>(Arrays.asList(id,monitorAddress))));
+		socketToServer.writeObject(new MethodInvokeMessage(CMD_START_SERVER, new ArrayList<Object>(Arrays.asList(monitorAddress,getServerPort(allServer.get(id))))));
 		ResultMessage answerFromServer = (ResultMessage) socketToServer.readObject();
 		if(answerFromServer.getResult().equals(ANSWER_DONE)){
 			setServerStatusToIdle(id);
@@ -185,7 +185,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	public void setServerStatus(InetAddress serverAddress,String serverStatus) {
 		for(int key:allServer.keySet()){
 			if(getServerAddress(allServer.get(key)).equals(serverAddress)){ //Falls der zu aendernde Eintrag der jetzige Eintrag ist
-				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,serverStatus)));
+				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,getServerStatus(allServer.get(key)),serverStatus)));
 			}
 		}
 	}
@@ -207,11 +207,11 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	}
 	
 	private void setServerStatusToIdle(int id){
-		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),STATUS_IDLE))); //Sieht echt beknackt aus......
+		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),getServerPort(allServer.get(id)),STATUS_IDLE))); //Sieht echt beknackt aus......
 	}
 	
 	private void setServerStatusToBusy(int id){
-		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),STATUS_BUSY))); //Sieht echt beknackt aus......
+		addSafeEntryAllServers(id, new ArrayList<Object>(Arrays.asList(getServerAddress(allServer.get(id)),getServerPort(allServer.get(id)),STATUS_BUSY))); //Sieht echt beknackt aus......
 	}
 
 	

@@ -31,7 +31,7 @@ public class StartServerService {
 		try {
 			serverSocket = new ServerSocket (SERVER_PORT);
 		} catch (IOException e) {
-			System.err.println("Server Socket konnte nicht initialisiert werden.");
+			System.err.println("StartServerService: Server Socket konnte nicht initialisiert werden.");
 			shutdown = true;
 		}
 		
@@ -66,9 +66,9 @@ public class StartServerService {
 							result = new ResultMessage(new WrongArgumentlistException());
 						}
 					} else {
-						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof Integer &
-							incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof InetAddress) {
-							serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(0),(InetAddress) incomingMessage.getArgumentList().get(1));
+						if(incomingMessage.getArgumentList().get(0) != null & incomingMessage.getArgumentList().get(0) instanceof InetAddress &
+							incomingMessage.getArgumentList().get(1) != null & incomingMessage.getArgumentList().get(1) instanceof Integer) {
+							serverThread = new ServerThread((int) incomingMessage.getArgumentList().get(1),(InetAddress) incomingMessage.getArgumentList().get(0));
 							serverThread.start();
 							serverThreads.put((int) incomingMessage.getArgumentList().get(1), serverThread);
 							result = ANSWER_DONE;

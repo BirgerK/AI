@@ -30,7 +30,7 @@ public interface IDispatcherToMonitor {
 	public String statusOfServer(int id);
 	
 	/**Startet den Server.
-	 * @param id ID des Server, der gestartet werden soll
+	 * @param id ID des Server, der gestartet werden soll (Eine von den ID's benutzen, die von 'getListOfAllServer()' verwenden)
 	 * @param monitorAddress IP-Adresse oder Hostname des Monitorservers an dem sich der MPS-Server melden soll
 	 * @throws IOException 
 	 * @throws UnknownHostException 
@@ -40,7 +40,7 @@ public interface IDispatcherToMonitor {
 	public void startServer(int id,InetAddress monitorAddress) throws UnknownHostException, IOException, ClassNotFoundException, CouldNotStartServerException;
 	
 	/**Stoppt den Server
-	 * @param id ID des Server, der gestoppt werden soll
+	 * @param id ID des Server, der gestoppt werden soll (Eine von den ID's benutzen, die von 'getListOfAllServer()' verwenden)
 	 * @param serverStatus Status des Servers. Nur Stati aus der Konstanten-Klasse verwenden! (Fangen alle mit 'STATUS' an)
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 

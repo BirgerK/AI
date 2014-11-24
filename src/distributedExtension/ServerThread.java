@@ -42,7 +42,7 @@ public class ServerThread extends Thread {
 			serverSocket = new ServerSocket(portNumber);
 			serverSocket.setSoTimeout(MPS_SERVER_SOCKET_TIMEOUT);
 		} catch (IOException e) {
-			System.err.println("Server Socket konnte nicht initialisiert werden.");
+			System.err.println("ServerThread: Server Socket konnte nicht auf Port " + portNumber + " initialisiert werden.");
 			shutdown = true;
 		}
 		
@@ -55,7 +55,7 @@ public class ServerThread extends Thread {
 			try {
 				socketToClient.setSocket(serverSocket.accept());
 			} catch (Exception e) {
-				System.err.println("Fehler bei Warten auf einkommende Verbindung.");
+				System.err.println("ServerThread: Warten auf einkommende Verbindung aufgrund Timeout abgebrochen.");
 			}
 			
 			

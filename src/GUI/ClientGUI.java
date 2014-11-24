@@ -28,6 +28,7 @@ public class ClientGUI extends JFrame {
 	private JTextField portTitel;
 	private JTextField serverAddresseEingabefeld;
 	private JTextField portEingabefeld;
+	private JTextField kundennummerTextfeld;
 	
 	private DefaultListModel<Komponente> komponentenListModel;
 	private DefaultListModel<Komponente> angebotListModel;
@@ -42,7 +43,7 @@ public class ClientGUI extends JFrame {
 		this.client = client;
 		
 		setSize(399, 545);
-		setLocation(300, 300);
+		setLocation(100, 300);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -53,7 +54,7 @@ public class ClientGUI extends JFrame {
 		panel.add(kundennummerEingebefeld);
 		kundennummerEingebefeld.setColumns(10);
 		
-		JTextField kundennummerTextfeld = new JTextField();
+		kundennummerTextfeld = new JTextField();
 		kundennummerTextfeld.setEditable(false);
 		kundennummerTextfeld.setText("Kundennummer");
 		kundennummerTextfeld.setBounds(10, 356, 107, 20);
@@ -93,6 +94,15 @@ public class ClientGUI extends JFrame {
 		angebotListTitle.setColumns(10);
 		
 		JButton erstelleAngebotButton = new JButton("Angebot erstellen");
+		erstelleAngebotButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(!kundennummerEingebefeld.getText().equals("") && !angebotListModel.isEmpty()) {
+					int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
+					
+				}
+			}
+		});
 		erstelleAngebotButton.setBounds(191, 355, 117, 23);
 		panel.add(erstelleAngebotButton);
 		

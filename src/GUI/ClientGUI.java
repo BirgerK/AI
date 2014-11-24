@@ -132,7 +132,7 @@ public class ClientGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(!serverAddresseEingabefeld.getText().equals("") && !portEingabefeld.getText().equals("")) {
-					InetAddress address;
+					InetAddress address = null;
 					
 					try {
 						address = InetAddress.getByName(serverAddresseEingabefeld.getText());

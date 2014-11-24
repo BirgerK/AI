@@ -27,9 +27,9 @@ public class FertigungsmanagementTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		komponenten = new HashSet<Komponente>();
-		komponenten.add(new Komponente("Nasenbohrer",5));
+		komponenten.add(new Komponente("Nasenbohrer",5, 5, 5));
 		
-		dummyAngebot = new Angebot(komponenten);
+		dummyAngebot = new Angebot(komponenten, 88);
 		
 		averwalter = new Auftragsverwalter();
 	}

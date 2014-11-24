@@ -24,8 +24,8 @@ public class FertigungsauftragTest {
 	private static Set<Komponente> komponenten = new HashSet<Komponente>();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		komponenten.add(new Komponente("Nasenbohrer",5));
-		dummyAngebot = new Angebot(komponenten);
+		komponenten.add(new Komponente("Nasenbohrer",5, 5, 5));
+		dummyAngebot = new Angebot(komponenten, 88);
 		
 		//Instanzen fuer die DB gebraucht wird
 		initializeHibernate();

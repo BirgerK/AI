@@ -35,26 +35,26 @@ public class AngebotTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		komponenten = new HashSet<Komponente>();
-		komponenten.add(new Komponente("Nasenbohrer",5));
+		komponenten.add(new Komponente("Nasenbohrer",5,5,5));
 		
-		dummyAngebot = new Angebot(komponenten);
+		dummyAngebot = new Angebot(komponenten,88);
 		
 		//Instanzen fuer die DB gebraucht wird
 		HibernateMaster.initializeHibernate();
 		
-		dummyWithFertigung = new Angebot(komponenten);
+		dummyWithFertigung = new Angebot(komponenten, 88);
 		dummyFertigung = new Fertigungsauftrag(dummyWithFertigung);
 		dummyWithFertigung.setFertigungsauftrag(dummyFertigung);
 		persistObject(dummyWithFertigung);
 		dummyWithFertigungId = dummyWithFertigung.getAngebotNr();
 		
-		dummyWithAuftrag = new Angebot(komponenten);
+		dummyWithAuftrag = new Angebot(komponenten, 88);
 		dummyAuftrag = new Kundenauftrag(dummyWithAuftrag);
 		dummyWithAuftrag.setKundenauftrag(dummyAuftrag);
 		persistObject(dummyWithAuftrag);
 		dummyWithAuftragId = dummyWithAuftrag.getAngebotNr();
 		
-		dummyWithTransport = new Angebot(komponenten);
+		dummyWithTransport = new Angebot(komponenten, 88);
 		dummyTransport = new Transportauftrag(dummyWithTransport);
 		dummyWithTransport.setTransportauftrag(dummyTransport);
 		persistObject(dummyWithTransport);

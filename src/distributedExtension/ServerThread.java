@@ -40,7 +40,7 @@ public class ServerThread extends Thread {
 	public void run(){
 		try {
 			serverSocket = new ServerSocket(portNumber);
-			serverSocket.setSoTimeout(MPS_SERVER_SOCKET_TIMEOUT);
+//			serverSocket.setSoTimeout(MPS_SERVER_SOCKET_TIMEOUT);
 		} catch (IOException e) {
 			System.err.println("ServerThread: Server Socket konnte nicht auf Port " + portNumber + " initialisiert werden.");
 			shutdown = true;
@@ -117,12 +117,12 @@ public class ServerThread extends Thread {
 						result = new MethodNotAvailableException();
 				}
 				
-				try {
-					socketToClient.writeObject(new ResultMessage(result));
-					socketToClient.closeConnection();
-				} catch (IOException e) {
-					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
-				}
+//				try {
+//					socketToClient.writeObject(new ResultMessage(result));
+//					socketToClient.closeConnection();
+//				} catch (IOException e) {
+//					System.err.println("Fehler bei Schreiben des Ergebnis auf den Stream.");
+//				}
 			}
 			
 			//Dem Monitor melden, dass der Server noch lebt

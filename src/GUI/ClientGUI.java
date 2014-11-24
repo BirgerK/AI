@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 
 import models.Komponente;
+import javax.swing.JButton;
 
 public class ClientGUI extends JFrame {
 	private JTextField kundennummerEingebefeld;
@@ -38,7 +39,7 @@ public class ClientGUI extends JFrame {
 		panel.add(kundennummerTextfeld);
 		
 		JScrollPane komponentenAuswahlScrollPane = new JScrollPane();
-		komponentenAuswahlScrollPane.setBounds(10, 57, 107, 287);
+		komponentenAuswahlScrollPane.setBounds(10, 57, 148, 287);
 		panel.add(komponentenAuswahlScrollPane);
 		
 		komponentenListModel = new DefaultListModel<Komponente>();
@@ -50,13 +51,13 @@ public class ClientGUI extends JFrame {
 		JList komponentenListBody = new JList(komponentenListModel);
 		komponentenAuswahlScrollPane.setViewportView(komponentenListBody);
 		
-		JTextPane komponentenListTitle = new JTextPane();
+		JTextField komponentenListTitle = new JTextField();
 		komponentenListTitle.setEditable(false);
 		komponentenListTitle.setText("Komponenten");
 		komponentenAuswahlScrollPane.setColumnHeaderView(komponentenListTitle);
 		
 		JScrollPane angebotScollPane = new JScrollPane();
-		angebotScollPane.setBounds(191, 57, 107, 287);
+		angebotScollPane.setBounds(191, 57, 148, 287);
 		panel.add(angebotScollPane);
 		
 		JList angebotListBody = new JList();
@@ -67,5 +68,9 @@ public class ClientGUI extends JFrame {
 		angebotListTitle.setText("Angebotsinhalt");
 		angebotScollPane.setColumnHeaderView(angebotListTitle);
 		angebotListTitle.setColumns(10);
+		
+		JButton btnAngebotErstellen = new JButton("Angebot erstellen");
+		btnAngebotErstellen.setBounds(294, 10, 117, 23);
+		panel.add(btnAngebotErstellen);
 	}
 }

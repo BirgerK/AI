@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 
 import models.Komponente;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ClientGUI extends JFrame {
 	private JTextField kundennummerEingebefeld;
@@ -74,6 +76,11 @@ public class ClientGUI extends JFrame {
 		panel.add(erstelleAngebotButton);
 		
 		JButton komponenteZuAngebotButton = new JButton("Hinzufuegen");
+		komponenteZuAngebotButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
 		komponenteZuAngebotButton.setBounds(10, 11, 107, 23);
 		panel.add(komponenteZuAngebotButton);
 	}

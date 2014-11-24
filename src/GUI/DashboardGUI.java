@@ -27,8 +27,8 @@ public class DashboardGUI extends JFrame {
 	JList<String> listOfAllServers;
 	DefaultListModel<String> listOfAllServersListModel;
 	JTextPane selectedServerStatusPane;
-	JTextPane idleTextPane;
-	JTextPane busyTextPane;
+	JTextField idleTextPane;
+	JTextField busyTextPane;
 	private JTextField txtAvailableServers;
 	private JTextField dispatcherStatusTextField;
 	
@@ -85,7 +85,7 @@ public class DashboardGUI extends JFrame {
 		scrollPane.setColumnHeaderView(txtAvailableServers);
 		txtAvailableServers.setColumns(10);
 		
-		JTextPane txtpnSelectedServerStatus = new JTextPane();
+		JTextField txtpnSelectedServerStatus = new JTextField();
 		txtpnSelectedServerStatus.setEditable(false);
 		txtpnSelectedServerStatus.setText("Selected Server Status:");
 		txtpnSelectedServerStatus.setBounds(155, 62, 234, 23);
@@ -106,14 +106,14 @@ public class DashboardGUI extends JFrame {
 		killServerButton.setBounds(277, 22, 112, 23);
 		panel.add(killServerButton);
 		
-		idleTextPane = new JTextPane();
+		idleTextPane = new JTextField();
 		idleTextPane.setEditable(false);
-		idleTextPane.setBounds(155, 130, 87, 23);
+		idleTextPane.setBounds(155, 208, 102, 23);
 		panel.add(idleTextPane);
 		
-		busyTextPane = new JTextPane();
+		busyTextPane = new JTextField();
 		busyTextPane.setEditable(false);
-		busyTextPane.setBounds(302, 130, 87, 23);
+		busyTextPane.setBounds(287, 208, 102, 23);
 		panel.add(busyTextPane);
 		
 		dispatcherStatusTextField = new JTextField();

@@ -2,8 +2,9 @@ package GUI;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import distributedExtension.Dispatcher;
@@ -18,6 +19,7 @@ public class Monitor extends Thread {
 	Dispatcher dispatcher;
 	
 	Set<Integer> listOfAllServers = new HashSet<Integer>();
+	Map<Integer, String> statusOfAllServers = new HashMap<Integer, String>();
 	
 	public Monitor(Dispatcher dispatcher) {
 		this.dispatcher = dispatcher;
@@ -57,6 +59,19 @@ public class Monitor extends Thread {
 			//Gib die Anzahlen an die GUI weiter
 			gui.setIdleAmount(idle);
 			gui.setBusyAmount(busy);
+			
+			//Pruefe auf gestorbene Server
+			for(Integer serverID : listOfAllServers) {
+				String status = statusOfAllServers.get(serverID);
+				
+				if(status == null) {
+					statusOfAllServers.put(serverID, dispatcher.statusOfServer(serverID));
+				} else if((status.equals("Busy") || status.equals("Idle")) && dispatcher.statusOfServer(serverID).equals("Offline")) {
+					gui.serverDied(serverID);
+				} else {
+					statusOfAllServers.put(serverID, dispatcher.statusOfServer(serverID));
+				}
+			}
 			
 			//Messe Endzeit
 			endTime = System.currentTimeMillis();

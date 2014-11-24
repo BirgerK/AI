@@ -32,6 +32,9 @@ public class Monitor extends Thread {
 			//Messe Startzeit
 			startTime = System.currentTimeMillis();
 			
+			//Setze den Dispatcherstatus in der GUI
+			gui.setDispatcherStatus(dispatcher.isAlive());
+			
 			//Wenn neue Server dazugekommen sind oder alte verschwunden sind aktualisiere die GUI
 			Set<Integer> newListOfAllServers = dispatcher.getListOfAllServers();
 			if(!listOfAllServers.containsAll(newListOfAllServers)) {
@@ -51,9 +54,6 @@ public class Monitor extends Thread {
 			//Gib die Anzahlen an die GUI weiter
 			gui.setIdleAmount(idle);
 			gui.setBusyAmount(busy);
-			
-			//Setze den Dispatcherstatus in der GUI
-			gui.setDispatcherStatus(dispatcher.isAlive());
 			
 			//Messe Endzeit
 			endTime = System.currentTimeMillis();

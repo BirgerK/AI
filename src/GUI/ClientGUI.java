@@ -100,6 +100,9 @@ public class ClientGUI extends JFrame {
 				if(!kundennummerEingebefeld.getText().equals("") && !angebotListModel.isEmpty()) {
 					int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
 					
+					for(int i = 0; i < angebotListModel.getSize(); i++) {
+						//TODO
+					}
 				}
 			}
 		});
@@ -160,6 +163,9 @@ public class ClientGUI extends JFrame {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					
+					serverAddresseEingabefeld.setText("");
+					portEingabefeld.setText("");
 				}
 			}
 		});

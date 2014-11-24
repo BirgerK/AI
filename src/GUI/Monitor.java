@@ -32,6 +32,9 @@ public class Monitor extends Thread {
 			//Messe Startzeit
 			startTime = System.currentTimeMillis();
 			
+			//Aktualisiere die Serverstati
+			dispatcher.refreshStatus();
+			
 			//Setze den Dispatcherstatus in der GUI
 			gui.setDispatcherStatus(dispatcher.isAlive());
 			

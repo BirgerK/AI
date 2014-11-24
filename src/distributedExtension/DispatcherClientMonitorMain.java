@@ -18,7 +18,7 @@ public abstract class DispatcherClientMonitorMain {
 		monitor = new Monitor(dispatcher);
 		
 		
-		StartServerService.main(null);
+		//StartServerService.main(null);
 		dispatcher.start();
 		client.start();
 		monitor.start();

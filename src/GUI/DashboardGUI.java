@@ -116,7 +116,7 @@ public class DashboardGUI extends JFrame {
 		
 		dispatcherStatusTextField = new JTextField();
 		dispatcherStatusTextField.setEditable(false);
-		dispatcherStatusTextField.setBounds(156, 242, 86, 20);
+		dispatcherStatusTextField.setBounds(156, 242, 233, 20);
 		panel.add(dispatcherStatusTextField);
 		dispatcherStatusTextField.setColumns(10);
 		setVisible(true);

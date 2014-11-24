@@ -35,7 +35,7 @@ public class DispatcherRequestHandler extends Thread{
 			if (socketToServer != null){	//Server ist also erreichbar
 				try {
 					socketToServer.writeObject(messageToServer);
-					result = new ResultMessage(socketToServer.readObject());
+					result = (ResultMessage) socketToServer.readObject();
 					//Anfrage komplett fertig bearbeitet, Server wird wieder freigegeben
 					myDispatcher.setServerStatusToIdle(serverForRequest);
 				} catch (Exception e) {

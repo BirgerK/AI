@@ -186,7 +186,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	public void setServerStatus(InetAddress serverAddress,String serverStatus) {
 		for(int key:allServer.keySet()){
 			if(getServerAddress(allServer.get(key)).equals(serverAddress)){ //Falls der zu aendernde Eintrag der jetzige Eintrag ist
-				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,getServerStatus(allServer.get(key)),serverStatus)));
+				addSafeEntryAllServers(key, new ArrayList<Object>(Arrays.asList(serverAddress,getServerPort(allServer.get(key)),serverStatus)));
 			}
 		}
 	}

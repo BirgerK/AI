@@ -19,13 +19,22 @@ public class ClientGUI extends JFrame {
 	private Client client;
 	
 	private JTextField kundennummerEingebefeld;
-	private DefaultListModel<Komponente> komponentenListModel;
 	private JTextField angebotListTitle;
+	private JTextField serverAddresseTitel;
+	private JTextField portTitel;
+	private JTextField serverAddresseEingabefeld;
+	private JTextField portEingabefeld;
+	
+	private DefaultListModel<Komponente> komponentenListModel;
+	private DefaultListModel<Komponente> angebotListModel;
+	private JList<Komponente> angebotListBody;
+	private JList<Komponente> komponentenListBody;
 	
 	public ClientGUI(Client client) {
+		super("Client");
+		
 		this.client = client;
 		
-		setTitle("Client");
 		setResizable(false);
 		
 		JPanel panel = new JPanel();
@@ -53,7 +62,7 @@ public class ClientGUI extends JFrame {
 		komponentenListModel.addElement(new Komponente("Nasenbohrer", 1, 20, 100));
 		komponentenListModel.addElement(new Komponente("Gartenlaube", 1, 100, 350));
 		
-		JList komponentenListBody = new JList(komponentenListModel);
+		komponentenListBody = new JList(komponentenListModel);
 		komponentenAuswahlScrollPane.setViewportView(komponentenListBody);
 		
 		JTextField komponentenListTitle = new JTextField();
@@ -65,7 +74,9 @@ public class ClientGUI extends JFrame {
 		angebotScollPane.setBounds(191, 57, 148, 287);
 		panel.add(angebotScollPane);
 		
-		JList angebotListBody = new JList();
+		angebotListModel = new DefaultListModel<Komponente>();
+		
+		angebotListBody = new JList(angebotListModel);
 		angebotScollPane.setViewportView(angebotListBody);
 		
 		angebotListTitle = new JTextField();
@@ -82,10 +93,39 @@ public class ClientGUI extends JFrame {
 		komponenteZuAngebotButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				angebotListModel.addElement(komponentenListBody.getSelectedValue());
 			}
 		});
 		komponenteZuAngebotButton.setBounds(10, 11, 107, 23);
 		panel.add(komponenteZuAngebotButton);
+		
+		serverAddresseTitel = new JTextField();
+		serverAddresseTitel.setEditable(false);
+		serverAddresseTitel.setText("Server Addresse");
+		serverAddresseTitel.setBounds(10, 453, 91, 20);
+		panel.add(serverAddresseTitel);
+		serverAddresseTitel.setColumns(10);
+		
+		portTitel = new JTextField();
+		portTitel.setText("Port");
+		portTitel.setEditable(false);
+		portTitel.setBounds(10, 484, 91, 20);
+		panel.add(portTitel);
+		portTitel.setColumns(10);
+		
+		serverAddresseEingabefeld = new JTextField();
+		serverAddresseEingabefeld.setBounds(111, 453, 117, 20);
+		panel.add(serverAddresseEingabefeld);
+		serverAddresseEingabefeld.setColumns(10);
+		
+		portEingabefeld = new JTextField();
+		portEingabefeld.setBounds(111, 484, 117, 20);
+		panel.add(portEingabefeld);
+		portEingabefeld.setColumns(10);
+		
+		JButton serverHinzufuegenButton = new JButton("Server Hinzufuegen");
+		serverHinzufuegenButton.setBounds(238, 452, 138, 23);
+		panel.add(serverHinzufuegenButton);
 		
 		setVisible(true);
 	}

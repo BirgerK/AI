@@ -23,7 +23,7 @@ import distributedExtension.ResultMessage;
 public class Client{
 	
 	private InetAddress dispatcherAddress = null;
-	private ClientGUI gui;
+	ClientGUI gui;
 	
 	//Socket aufbauen
 	public Client(InetAddress dispatcherAddress) throws UnknownHostException, IOException{

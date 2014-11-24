@@ -40,4 +40,7 @@ public class Komponente {
 		return fertigungsKosten;
 	}
 	
+	public String toString() {
+		return name;
+	}
 }

@@ -210,6 +210,7 @@ public class ClientGUI extends JFrame {
 		panel.add(entfernenButton);
 		
 		preisTextField = new JTextField();
+		preisTextField.setText("Preis: 0");
 		preisTextField.setEditable(false);
 		preisTextField.setBounds(191, 384, 148, 20);
 		panel.add(preisTextField);

@@ -141,15 +141,15 @@ public class DashboardGUI extends JFrame {
 		monitor.setSelectedServer(serverID);
 	}
 	
-	public void setIdleAmount(int noOfIdleServers) {
+	synchronized public void setIdleAmount(int noOfIdleServers) {
 		idleTextPane.setText("Idle: " + noOfIdleServers);
 	}
 	
-	public void setBusyAmount(int noOfBusyServers) {
+	synchronized public void setBusyAmount(int noOfBusyServers) {
 		busyTextPane.setText("Busy: " + noOfBusyServers);
 	}
 	
-	public void setDispatcherStatus(boolean alive) {
+	synchronized public void setDispatcherStatus(boolean alive) {
 		if(alive) {
 			dispatcherStatusTextField.setText("Dispatcher Status: Alive");
 		} else {
@@ -157,7 +157,7 @@ public class DashboardGUI extends JFrame {
 		}
 	}
 	
-	public void setStatusOfSelectedServer(String status) {
+	synchronized public void setStatusOfSelectedServer(String status) {
 		if(status == null) {
 			selectedServerStatusPane.setText("Not available");
 		} else {
@@ -165,7 +165,7 @@ public class DashboardGUI extends JFrame {
 		}
 	}
 	
-	public void refreshServerList(Set<Integer> serverList) {
+	synchronized public void refreshServerList(Set<Integer> serverList) {
 		int selectedIndex = listOfAllServers.getSelectedIndex();
 		listOfAllServersListModel.clear();
 		for(Integer server : serverList) {

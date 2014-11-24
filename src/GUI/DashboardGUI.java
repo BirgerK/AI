@@ -72,10 +72,8 @@ public class DashboardGUI extends JFrame {
 				if(!listOfAllServers.isSelectionEmpty()) {
 					String selectedElement = listOfAllServers.getSelectedValue();
 					setSelectedServer(Integer.parseInt(selectedElement));
-					System.out.println("ausgewaehlt: " + selectedElement);
 				} else {
 					setSelectedServer(0);
-					System.out.println("nichts ausgewaehlt");
 				}
 			}
 		});
@@ -168,9 +166,15 @@ public class DashboardGUI extends JFrame {
 	}
 	
 	public void refreshServerList(Set<Integer> serverList) {
+		int selectedIndex = listOfAllServers.getSelectedIndex();
 		listOfAllServersListModel.clear();
 		for(Integer server : serverList) {
 			listOfAllServersListModel.addElement(Integer.toString(server));
+		}
+		if(selectedIndex < listOfAllServersListModel.getSize()) {
+			listOfAllServers.setSelectedIndex(selectedIndex);
+		} else {
+			listOfAllServers.setSelectedIndex(listOfAllServersListModel.getSize() - 1);
 		}
 	}
 }

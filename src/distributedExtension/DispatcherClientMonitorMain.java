@@ -16,9 +16,7 @@ public abstract class DispatcherClientMonitorMain {
 		dispatcher = new Dispatcher();
 		client = new Client(InetAddress.getLocalHost());
 		monitor = new Monitor(dispatcher);
-		
-		
-		
+
 		dispatcher.start();
 		client.start();
 		monitor.start();

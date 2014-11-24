@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -16,8 +18,6 @@ import javax.swing.JTextField;
 
 import models.Komponente;
 import Client.Client;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class ClientGUI extends JFrame {
 	private Client client;
@@ -98,10 +98,11 @@ public class ClientGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(!kundennummerEingebefeld.getText().equals("") && !angebotListModel.isEmpty()) {
+					List<Komponente> komponenten = new ArrayList<Komponente>();
 					int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
 					
 					for(int i = 0; i < angebotListModel.getSize(); i++) {
-						//TODO
+						komponenten.add(angebotListModel.getElementAt(i));
 					}
 				}
 			}

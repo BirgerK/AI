@@ -69,10 +69,14 @@ public class DashboardGUI extends JFrame {
 		scrollPane.setViewportView(listOfAllServers);
 		listOfAllServers.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				int selectedIndex = listOfAllServers.getSelectedIndex();
-				String selectedElement = listOfAllServersListModel.get(selectedIndex);
-				setSelectedServer(Integer.parseInt(selectedElement));
-				System.out.println(selectedElement + " selected");
+				if(!listOfAllServers.isSelectionEmpty()) {
+					String selectedElement = listOfAllServers.getSelectedValue();
+					setSelectedServer(Integer.parseInt(selectedElement));
+					System.out.println("ausgewaehlt: " + selectedElement);
+				} else {
+					setSelectedServer(0);
+					System.out.println("nichts ausgewaehlt");
+				}
 			}
 		});
 		listOfAllServers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -166,7 +170,7 @@ public class DashboardGUI extends JFrame {
 	public void refreshServerList(Set<Integer> serverList) {
 		listOfAllServersListModel.clear();
 		for(Integer server : serverList) {
-			listOfAllServersListModel.addElement("Server No:" + server);
+			listOfAllServersListModel.addElement(Integer.toString(server));
 		}
 	}
 }

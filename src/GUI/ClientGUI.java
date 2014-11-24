@@ -20,6 +20,9 @@ import models.Angebot;
 import models.Komponente;
 import Client.Client;
 
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+
 public class ClientGUI extends JFrame {
 	private Client client;
 	
@@ -36,6 +39,7 @@ public class ClientGUI extends JFrame {
 	private JList<Komponente> angebotListBody;
 	private JList<Komponente> komponentenListBody;
 	private JButton entfernenButton;
+	private JTextField preisTextField;
 	
 	public ClientGUI(Client client) {
 		super("Client");
@@ -51,7 +55,7 @@ public class ClientGUI extends JFrame {
 		panel.setLayout(null);
 		
 		kundennummerEingebefeld = new JTextField();
-		kundennummerEingebefeld.setBounds(10, 384, 157, 20);
+		kundennummerEingebefeld.setBounds(10, 384, 148, 20);
 		panel.add(kundennummerEingebefeld);
 		kundennummerEingebefeld.setColumns(10);
 		
@@ -86,6 +90,24 @@ public class ClientGUI extends JFrame {
 		angebotListModel = new DefaultListModel<Komponente>();
 		
 		angebotListBody = new JList(angebotListModel);
+		angebotListBody.addContainerListener(new ContainerAdapter() {
+			@Override
+			public void componentAdded(ContainerEvent arg0) {
+				try {
+					erneuerePreis();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			@Override
+			public void componentRemoved(ContainerEvent e) {
+				try {
+					erneuerePreis();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		angebotScollPane.setViewportView(angebotListBody);
 		
 		angebotListTitle = new JTextField();
@@ -98,22 +120,10 @@ public class ClientGUI extends JFrame {
 		erstelleAngebotButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(!kundennummerEingebefeld.getText().equals("") && !angebotListModel.isEmpty()) {
-					Map<Integer, Integer> komponenten = new HashMap<Integer, Integer>();
-					int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
-					
-					for(int i = 0; i < angebotListModel.getSize(); i++) {
-						Komponente komponente = angebotListModel.get(i);
-						
-						if(komponenten.containsKey(komponente)) {
-							komponenten.put(komponente.getKomponenteID(), komponenten.get(komponente) + 1);
-						} else {
-							komponenten.put(komponente.getKomponenteID(), 1);
-						}
-					}
-					
+				Angebot angebot = baueAngebotZusammen();
+				
+				if(angebot != null) {
 					try {
-						Angebot angebot = erstelleAngebot(komponenten, kundennummer);
 						angebotAbschicken(angebot);
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -199,9 +209,23 @@ public class ClientGUI extends JFrame {
 		entfernenButton.setBounds(191, 11, 117, 23);
 		panel.add(entfernenButton);
 		
+		preisTextField = new JTextField();
+		preisTextField.setEditable(false);
+		preisTextField.setBounds(191, 384, 148, 20);
+		panel.add(preisTextField);
+		preisTextField.setColumns(10);
+		
 		setVisible(true);
 	}
 	
+	protected void erneuerePreis() throws Exception {
+		if(komponentenListModel.isEmpty() || kundennummerEingebefeld.getText().equals("")) {
+			preisTextField.setText("Preis: 0");
+		} else {
+			preisTextField.setText("Preis: " + client.berechneKosten(baueAngebotZusammen()));
+		}
+	}
+
 	private void addServer(InetAddress address, int port) throws Exception {
 		client.addServer(address, port);
 	}
@@ -214,5 +238,30 @@ public class ClientGUI extends JFrame {
 		client.erstelleFertigungsauftrag(angebot);
 		client.erstelleKundenauftrag(angebot);
 		client.erstelleTransportauftrag(angebot);
+	}
+	
+	private Angebot baueAngebotZusammen() {
+		if(!kundennummerEingebefeld.getText().equals("") && !angebotListModel.isEmpty()) {
+			Map<Integer, Integer> komponenten = new HashMap<Integer, Integer>();
+			int kundennummer = Integer.parseInt(kundennummerEingebefeld.getText());
+			
+			for(int i = 0; i < angebotListModel.getSize(); i++) {
+				Komponente komponente = angebotListModel.get(i);
+				
+				if(komponenten.containsKey(komponente)) {
+					komponenten.put(komponente.getKomponenteID(), komponenten.get(komponente) + 1);
+				} else {
+					komponenten.put(komponente.getKomponenteID(), 1);
+				}
+			}
+			
+			try {
+				Angebot angebot = erstelleAngebot(komponenten, kundennummer);
+				return angebot;
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		return null;
 	}
 }

@@ -124,7 +124,7 @@ public class ClientGUI extends JFrame {
 				
 				if(angebot != null) {
 					try {
-						angebotAbschicken(angebot);
+//						angebotAbschicken(angebot);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}

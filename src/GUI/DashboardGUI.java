@@ -42,7 +42,7 @@ public class DashboardGUI extends JFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JButton btnStartServer = new JButton("Start new Server");
+		JButton btnStartServer = new JButton("Start Server");
 		btnStartServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -53,7 +53,7 @@ public class DashboardGUI extends JFrame {
 				startServer();
 			}
 		});
-		btnStartServer.setBounds(180, 147, 87, 23);
+		btnStartServer.setBounds(155, 22, 112, 23);
 		panel.add(btnStartServer);
 		
 		listOfAllServersListModel = new DefaultListModel<String>();
@@ -76,44 +76,47 @@ public class DashboardGUI extends JFrame {
 		JTextPane txtpnSelectedServerStatus = new JTextPane();
 		txtpnSelectedServerStatus.setEditable(false);
 		txtpnSelectedServerStatus.setText("Selected Server Status:");
-		txtpnSelectedServerStatus.setBounds(180, 79, 195, 23);
+		txtpnSelectedServerStatus.setBounds(155, 62, 234, 23);
 		panel.add(txtpnSelectedServerStatus);
 		
 		selectedServerStatusPane = new JTextPane();
 		selectedServerStatusPane.setEditable(false);
-		selectedServerStatusPane.setBounds(180, 113, 195, 23);
+		selectedServerStatusPane.setBounds(155, 96, 234, 23);
 		panel.add(selectedServerStatusPane);
 		
-		JButton killServerButton = new JButton("Kill Server");
+		JButton killServerButton = new JButton("Stop Server");
 		killServerButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				killServer(Integer.parseInt(listOfAllServers.getSelectedValue()));
 			}
 		});
-		killServerButton.setBounds(288, 147, 87, 23);
+		killServerButton.setBounds(277, 22, 112, 23);
 		panel.add(killServerButton);
 		
 		idleTextPane = new JTextPane();
 		idleTextPane.setEditable(false);
-		idleTextPane.setBounds(180, 24, 87, 23);
+		idleTextPane.setBounds(180, 239, 87, 23);
 		panel.add(idleTextPane);
 		
 		busyTextPane = new JTextPane();
 		busyTextPane.setEditable(false);
-		busyTextPane.setBounds(288, 24, 87, 23);
+		busyTextPane.setBounds(288, 239, 87, 23);
 		panel.add(busyTextPane);
 		setVisible(true);
 		
 	}
 	
 	private void startServer() {
-		monitor.startServer();
-		//listOfAllServersListModel.addElement("Clicky");
+		if(!listOfAllServers.isSelectionEmpty()) {
+			monitor.startServer(Integer.parseInt(listOfAllServers.getSelectedValue()));
+		}
 	}
 	
 	private void killServer(int serverID) {
-		monitor.killServer(serverID);
+		if(!listOfAllServers.isSelectionEmpty()) {
+			monitor.killServer(serverID);
+		}
 	}
 	
 	private void setSelectedServer(int serverID) {

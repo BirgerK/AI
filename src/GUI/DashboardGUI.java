@@ -53,13 +53,13 @@ public class DashboardGUI extends JFrame {
 				startServer();
 			}
 		});
-		btnStartServer.setBounds(33, 24, 118, 23);
+		btnStartServer.setBounds(180, 147, 87, 23);
 		panel.add(btnStartServer);
 		
 		listOfAllServersListModel = new DefaultListModel<String>();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(33, 79, 112, 183);
+		scrollPane.setBounds(33, 24, 112, 238);
 		panel.add(scrollPane);
 		listOfAllServers = new JList<String>(listOfAllServersListModel);
 		scrollPane.setViewportView(listOfAllServers);
@@ -91,7 +91,7 @@ public class DashboardGUI extends JFrame {
 				killServer(Integer.parseInt(listOfAllServers.getSelectedValue()));
 			}
 		});
-		killServerButton.setBounds(180, 147, 118, 23);
+		killServerButton.setBounds(288, 147, 87, 23);
 		panel.add(killServerButton);
 		
 		idleTextPane = new JTextPane();

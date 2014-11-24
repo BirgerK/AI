@@ -22,6 +22,7 @@ import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +77,7 @@ public class Dispatcher extends Thread implements IDispatcherToClient,IDispatche
 	
 	@Override
 	public Set<Integer> getListOfAllServers() {
-		return allServer.keySet();
+		return Collections.synchronizedSet(allServer.keySet());
 	}
 
 	@Override

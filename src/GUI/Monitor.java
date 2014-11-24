@@ -10,7 +10,7 @@ import distributedExtension.Dispatcher;
 import exceptions.CouldNotStartServerException;
 
 public class Monitor extends Thread {
-	private final int FPS = 1;
+	private final int FPS = 10;
 	private boolean run = true;
 	private int lastServerID = 0;
 	private int selectedServer = 0;

@@ -1,5 +1,8 @@
 package distributedExtension;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
+
 import Client.Client;
 import GUI.Monitor;
 
@@ -8,7 +11,7 @@ public abstract class DispatcherClientMonitorMain {
 	private static Monitor monitor = null;
 	private static Client client = null;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnknownHostException, IOException {
 		dispatcher = new Dispatcher();
 		client = new Client(dispatcher);
 		monitor = new Monitor(dispatcher);

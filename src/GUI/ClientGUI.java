@@ -1,27 +1,30 @@
 package GUI;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-
-import models.Komponente;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
+import models.Komponente;
+import Client.Client;
+
 public class ClientGUI extends JFrame {
+	private Client client;
+	
 	private JTextField kundennummerEingebefeld;
 	private DefaultListModel<Komponente> komponentenListModel;
 	private JTextField angebotListTitle;
 	
-	public ClientGUI() {
+	public ClientGUI(Client client) {
+		this.client = client;
+		
 		setTitle("Client");
 		setResizable(false);
 		
@@ -83,5 +86,7 @@ public class ClientGUI extends JFrame {
 		});
 		komponenteZuAngebotButton.setBounds(10, 11, 107, 23);
 		panel.add(komponenteZuAngebotButton);
+		
+		setVisible(true);
 	}
 }

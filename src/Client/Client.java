@@ -59,7 +59,7 @@ public class Client{
 	}
 
 	public void start() {
-		gui = new ClientGUI();
+		gui = new ClientGUI(this);
 	}
 	
 	private Object sendRequestToServerAndGetAnswer(MethodInvokeMessage messageToSend) throws Exception{

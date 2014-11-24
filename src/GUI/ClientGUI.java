@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 
 import models.Komponente;
 import Client.Client;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ClientGUI extends JFrame {
 	private Client client;
@@ -31,6 +33,7 @@ public class ClientGUI extends JFrame {
 	private DefaultListModel<Komponente> angebotListModel;
 	private JList<Komponente> angebotListBody;
 	private JList<Komponente> komponentenListBody;
+	private JButton entfernenButton;
 	
 	public ClientGUI(Client client) {
 		super("Client");
@@ -90,7 +93,7 @@ public class ClientGUI extends JFrame {
 		angebotListTitle.setColumns(10);
 		
 		JButton erstelleAngebotButton = new JButton("Angebot erstellen");
-		erstelleAngebotButton.setBounds(191, 11, 117, 23);
+		erstelleAngebotButton.setBounds(191, 355, 117, 23);
 		panel.add(erstelleAngebotButton);
 		
 		JButton komponenteZuAngebotButton = new JButton("Hinzufuegen");
@@ -100,7 +103,7 @@ public class ClientGUI extends JFrame {
 				angebotListModel.addElement(komponentenListBody.getSelectedValue());
 			}
 		});
-		komponenteZuAngebotButton.setBounds(10, 11, 107, 23);
+		komponenteZuAngebotButton.setBounds(10, 11, 117, 23);
 		panel.add(komponenteZuAngebotButton);
 		
 		serverAddresseTitel = new JTextField();
@@ -152,6 +155,18 @@ public class ClientGUI extends JFrame {
 		});
 		serverHinzufuegenButton.setBounds(238, 452, 138, 23);
 		panel.add(serverHinzufuegenButton);
+		
+		entfernenButton = new JButton("Entfernen");
+		entfernenButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(!angebotListBody.isSelectionEmpty()) {
+					angebotListModel.removeElement(angebotListBody.getSelectedValue());
+				}
+			}
+		});
+		entfernenButton.setBounds(191, 11, 117, 23);
+		panel.add(entfernenButton);
 		
 		setVisible(true);
 	}

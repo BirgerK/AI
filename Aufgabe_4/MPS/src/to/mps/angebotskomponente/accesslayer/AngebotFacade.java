@@ -2,6 +2,7 @@ package to.mps.angebotskomponente.accesslayer;
 
 import to.mps.angebotskomponente.dataaccesslayer.Angebot;
 import to.mps.angebotskomponente.dataaccesslayer.AngebotRepo;
+import to.mps.managementdashboard.ManagementDashboard;
 
 public class AngebotFacade implements AngebotServices{
 
@@ -10,6 +11,7 @@ public class AngebotFacade implements AngebotServices{
 	@Override
 	public Angebot erstelleAngebot(Angebot angebot) {
 		angebotRepo.saveAngebot(angebot);
+		ManagementDashboard.newAngebot(angebot);
 		return angebot;
 	}
 }

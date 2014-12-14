@@ -34,6 +34,8 @@ public class AuftragskomponenteTest {
 			auftrag = auftragservices.erstelleAuftrag(auftrag);
 			
 			Auftrag auftrag2 = auftragRepo.findAuftrag(auftrag.getId());
+			
+			auftrag.setIstAbgeschlossen(true);
 
 			assertEquals(auftrag.getId(), auftrag2.getId());
 			

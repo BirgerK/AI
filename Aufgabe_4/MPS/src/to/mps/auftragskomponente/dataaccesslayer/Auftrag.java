@@ -20,6 +20,7 @@ import to.mps.angebotskomponente.dataaccesslayer.Angebot;
 import to.mps.common.AbstractEntity;
 import to.mps.fertigungskomponente.dataaccesslayer.Bauteil;
 import to.mps.fertigungskomponente.dataaccesslayer.Fertigungsauftrag;
+import to.mps.managementdashboard.ManagementDashboard;
 
 
 
@@ -54,6 +55,9 @@ public class Auftrag extends AbstractEntity implements Serializable{
 
 	public void setIstAbgeschlossen(boolean istAbgeschlossen) {
 		this.istAbgeschlossen = istAbgeschlossen;
+		if(ManagementDashboard.exists(this)){
+			ManagementDashboard.fertiggestellterAuftrag(this);
+		}
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)

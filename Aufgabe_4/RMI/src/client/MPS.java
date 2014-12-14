@@ -10,7 +10,7 @@ import rmi.Monitor;
 public class MPS {
 	  public static void main( String[] args ) throws  RemoteException, NotBoundException
 	  {
-	    Registry registry = LocateRegistry.getRegistry("127.0.0.1");
+	    Registry registry = LocateRegistry.getRegistry();
 	    Monitor adder = (Monitor) registry.lookup( "Monitor" );
 	    adder.register("LEONIDAS");
 	  }

@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/required/jboss-logging-annotations-1.2.0.Beta1.jar"/>
 	<classpathentry kind="lib" path="lib/required/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/elasticsearch-0.19.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

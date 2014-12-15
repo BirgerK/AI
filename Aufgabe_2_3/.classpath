@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate-entitymanager-4.3.6.Final.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/elasticsearch-0.19.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

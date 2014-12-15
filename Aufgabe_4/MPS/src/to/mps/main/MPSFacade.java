@@ -102,4 +102,12 @@ public class MPSFacade implements MPS{
 			return null;
 		}
 	}
+
+	@Override
+	public void schliesseAb(AuftragTO a) throws RemoteException {
+		System.out.println("Auftrag wird abgeschlossen");
+		auftragFacade.schliesseAb(a.toEntity());
+	}
+	
+	
 }

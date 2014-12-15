@@ -19,8 +19,6 @@ public class AuftragFacade implements AuftragServices{
 	@Override
 	public Auftrag erstelleAuftrag(Auftrag a) {
 		auftragRepo.saveAuftrag(a);
-		ManagementDashboard.newAngebot(a.getAngebot());
-		ManagementDashboard.angebotWirdAuftrag(a.getAngebot());
 		return a;
 	}
 
@@ -28,7 +26,13 @@ public class AuftragFacade implements AuftragServices{
 	public Auftrag erstelleAuftragAusAngebot(Angebot angebot) {
 		Auftrag auftrag = new Auftrag(false, new Date(), angebot);
 		auftragRepo.saveAuftrag(auftrag);
-		ManagementDashboard.angebotWirdAuftrag(angebot);
 		return auftrag;
 	}
+
+	@Override
+	public void schliesseAb(Auftrag a) {
+		a.setIstAbgeschlossen(true);
+	}
+	
+	
 }

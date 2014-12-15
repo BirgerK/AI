@@ -7,4 +7,6 @@ public interface AuftragServices {
 	public Auftrag erstelleAuftrag(Auftrag a);
 	
 	public Auftrag erstelleAuftragAusAngebot(Angebot angebot);
+	
+	public void schliesseAb(Auftrag a);
 }

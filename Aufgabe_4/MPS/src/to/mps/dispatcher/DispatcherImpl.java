@@ -69,4 +69,18 @@ public class DispatcherImpl implements Dispatcher{
 		Registry registry = LocateRegistry.getRegistry();
 		return ((MPS) registry.lookup(name));
 	}
+
+	@Override
+	public void schliesseAb(AuftragTO a) {
+		try {
+			getServer().schliesseAb(a);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

@@ -12,6 +12,7 @@ import java.util.TimerTask;
 
 import to.mps.angebotskomponente.dataaccesslayer.Angebot;
 import to.mps.angebotskomponente.dataaccesslayer.AngebotTO;
+import to.mps.auftragskomponente.dataaccesslayer.AuftragTO;
 import to.mps.dashboard.DashboardImpl;
 import to.mps.dispatcher.Dispatcher;
 import to.mps.dispatcher.DispatcherImpl;
@@ -23,7 +24,7 @@ public class ClientImpl {
 	Dispatcher dispatcher;
 	private final long PERIOD = 1*1000;
 	private static final int TIMEOUT_IN_SEC = 3;
-	private static final int SLEEP_IN_MS = 5000;
+	private static final int SLEEP_IN_MS = 10000;
 	public static void main( String[] args ){
 		Dispatcher dispatcher = new DispatcherImpl();
 		Monitor monitor = new MonitorImpl(dispatcher, TIMEOUT_IN_SEC);
@@ -68,7 +69,8 @@ public class ClientImpl {
 					a = dispatcher.erstelleAngebot(getAngebot());
 			       double random = Math.random();
 			       if(random > 0.5){
-			    	   dispatcher.angebot2Auftrag(a);
+			    	   AuftragTO b = dispatcher.angebot2Auftrag(a);
+			    	   dispatcher.schliesseAb(b);
 			       }
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block

@@ -5,6 +5,7 @@ import java.util.Date;
 import to.mps.auftragskomponente.dataaccesslayer.Auftrag;
 import to.mps.common.TransportObject;
 import to.mps.fertigungskomponente.dataaccesslayer.Bauteil;
+import to.mps.managementdashboard.ManagementDashboard;
 
 public class AngebotTO implements TransportObject<Angebot>{
 
@@ -68,7 +69,6 @@ public class AngebotTO implements TransportObject<Angebot>{
 
 	public Angebot toEntity() {
 		Angebot angebot = new Angebot();
-		
 		angebot.setId(id);
 		angebot.setGueltigAb(gueltigAb);
 		angebot.setGueltigBis(gueltigBis);

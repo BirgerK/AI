@@ -11,4 +11,5 @@ import to.mps.auftragskomponente.dataaccesslayer.AuftragTO;
 public interface MPS extends Remote{
 	AngebotTO erstelleAngebot(AngebotTO a) throws RemoteException;
 	AuftragTO angebot2Auftrag(AngebotTO a) throws RemoteException;
+	void schliesseAb(AuftragTO a) throws RemoteException;
 }

@@ -12,4 +12,5 @@ public interface Dispatcher extends Remote {
 	public AuftragTO angebot2Auftrag(AngebotTO a) throws RemoteException;
 	public void update(String name, boolean b);
 	public void register(Monitor m);
+	public void schliesseAb(AuftragTO a);
 }

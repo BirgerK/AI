@@ -99,6 +99,7 @@ public class MPSFacade implements MPS{
 			return auftragFacade.erstelleAuftragAusAngebot(a.toEntity()).toTO();
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			return null;
 		}
 	}

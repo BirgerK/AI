@@ -751,3 +751,33 @@ org.elasticsearch.indices.InvalidIndexNameException: [shakespeare -d ' {  "mappi
 [2014-12-11 21:51:46,510][INFO ][http                     ] [Lament] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.12:9200]}
 [2014-12-11 21:51:46,510][INFO ][node                     ] [Lament] started
 [2014-12-11 21:51:46,844][INFO ][gateway                  ] [Lament] recovered [2] indices into cluster_state
+[2014-12-15 12:57:30,979][INFO ][node                     ] [Toad-In-Waiting] version[1.4.1], pid[6036], build[89d3241/2014-11-26T15:49:29Z]
+[2014-12-15 12:57:30,980][INFO ][node                     ] [Toad-In-Waiting] initializing ...
+[2014-12-15 12:57:30,988][INFO ][plugins                  ] [Toad-In-Waiting] loaded [], sites []
+[2014-12-15 12:57:36,076][INFO ][node                     ] [Toad-In-Waiting] initialized
+[2014-12-15 12:57:36,077][INFO ][node                     ] [Toad-In-Waiting] starting ...
+[2014-12-15 12:57:36,550][INFO ][transport                ] [Toad-In-Waiting] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/141.22.31.157:9300]}
+[2014-12-15 12:57:36,806][INFO ][discovery                ] [Toad-In-Waiting] elasticsearch/8vP2a0BeRyan5dbC7H-n_A
+[2014-12-15 12:57:40,612][INFO ][cluster.service          ] [Toad-In-Waiting] new_master [Toad-In-Waiting][8vP2a0BeRyan5dbC7H-n_A][SALLY][inet[/141.22.31.157:9300]], reason: zen-disco-join (elected_as_master)
+[2014-12-15 12:57:40,747][INFO ][http                     ] [Toad-In-Waiting] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/141.22.31.157:9200]}
+[2014-12-15 12:57:40,748][INFO ][node                     ] [Toad-In-Waiting] started
+[2014-12-15 12:57:42,036][INFO ][gateway                  ] [Toad-In-Waiting] recovered [2] indices into cluster_state
+[2014-12-15 13:00:07,261][INFO ][node                     ] [Toad-In-Waiting] stopping ...
+[2014-12-15 13:00:07,495][INFO ][node                     ] [Toad-In-Waiting] stopped
+[2014-12-15 13:00:07,495][INFO ][node                     ] [Toad-In-Waiting] closing ...
+[2014-12-15 13:00:07,510][INFO ][node                     ] [Toad-In-Waiting] closed
+[2014-12-15 13:14:45,927][INFO ][node                     ] [U-Man] version[1.4.1], pid[6228], build[89d3241/2014-11-26T15:49:29Z]
+[2014-12-15 13:14:45,942][INFO ][node                     ] [U-Man] initializing ...
+[2014-12-15 13:14:45,942][INFO ][plugins                  ] [U-Man] loaded [], sites []
+[2014-12-15 13:14:51,059][INFO ][node                     ] [U-Man] initialized
+[2014-12-15 13:14:51,059][INFO ][node                     ] [U-Man] starting ...
+[2014-12-15 13:14:51,512][INFO ][transport                ] [U-Man] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/141.22.31.157:9300]}
+[2014-12-15 13:14:51,683][INFO ][discovery                ] [U-Man] elasticsearch/LThXAAK3TG2Q0t6wC6tDNw
+[2014-12-15 13:14:55,495][INFO ][cluster.service          ] [U-Man] new_master [U-Man][LThXAAK3TG2Q0t6wC6tDNw][SALLY][inet[/141.22.31.157:9300]], reason: zen-disco-join (elected_as_master)
+[2014-12-15 13:14:55,627][INFO ][http                     ] [U-Man] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/141.22.31.157:9200]}
+[2014-12-15 13:14:55,630][INFO ][node                     ] [U-Man] started
+[2014-12-15 13:14:56,900][INFO ][gateway                  ] [U-Man] recovered [2] indices into cluster_state
+[2014-12-15 13:21:49,595][INFO ][node                     ] [U-Man] stopping ...
+[2014-12-15 13:21:49,892][INFO ][node                     ] [U-Man] stopped
+[2014-12-15 13:21:49,892][INFO ][node                     ] [U-Man] closing ...
+[2014-12-15 13:21:49,892][INFO ][node                     ] [U-Man] closed

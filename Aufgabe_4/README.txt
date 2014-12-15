@@ -1,5 +1,8 @@
-How to start KiBaNa:
-
+    #######################
+    # How to start KiBaNa #
+    #######################
+	
+	
 1. 	Im Ordner /Apache-Tomcat-6.0.43/bin in der Konsole die startup.bat 
 	aufrufen. Diese Tomcat Instant kann nun im Browser unter 
 	http://localhost:8080 erreicht werden.

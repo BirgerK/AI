@@ -11,7 +11,6 @@ public class AngebotFacade implements AngebotServices{
 	@Override
 	public Angebot erstelleAngebot(Angebot angebot) {
 		angebotRepo.saveAngebot(angebot);
-		ManagementDashboard.newAngebot(angebot);
 		return angebot;
 	}
 }

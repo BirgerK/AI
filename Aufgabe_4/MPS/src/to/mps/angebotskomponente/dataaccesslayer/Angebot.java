@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 import to.mps.auftragskomponente.dataaccesslayer.Auftrag;
 import to.mps.common.AbstractEntity;
 import to.mps.fertigungskomponente.dataaccesslayer.Bauteil;
+import to.mps.managementdashboard.ManagementDashboard;
 
 
 @Entity
@@ -35,6 +36,7 @@ public class Angebot extends AbstractEntity implements Serializable{
 		setGueltigBis(gueltigBis);
 		setPreis(preis);
 		setBauteil(bauteil);
+		ManagementDashboard.newAngebot(this);
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

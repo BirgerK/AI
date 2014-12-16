@@ -30,11 +30,11 @@ public class ESearchWrapper {
         defaultIndexName = indexName;
         defaultDocumentType = documentType;
         // MAPPING GOES HERE
- 		CreateIndexRequestBuilder createIndexRequestBuilder = connToDB.admin().indices().prepareCreate(defaultIndexName);
- 		createIndexRequestBuilder.addMapping(defaultDocumentType, jsonData);
- 		
- 		// MAPPING DONE
- 		createIndexRequestBuilder.execute().actionGet();
+// 		CreateIndexRequestBuilder createIndexRequestBuilder = connToDB.admin().indices().prepareCreate(defaultIndexName);
+// 		createIndexRequestBuilder.addMapping(defaultDocumentType, jsonData);
+// 		
+// 		// MAPPING DONE
+// 		createIndexRequestBuilder.execute().actionGet();
 	}
 	
 	/**Add new entry do the ElasticSearch database http://stackoverflow.com/questions/22071198/adding-mapping-to-a-type-from-java-how-do-i-do-it

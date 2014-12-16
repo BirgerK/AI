@@ -17,5 +17,18 @@
 	<classpathentry kind="lib" path="lib/required/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/elasticsearch-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-analyzers-common-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-core-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-expressions-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-grouping-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-highlighter-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-join-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-memory-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-misc-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-queries-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-queryparser-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-sandbox-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-spatial-4.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/required/lucene-suggest-4.10.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import to.mps.angebotskomponente.dataaccesslayer.Angebot;
 import to.mps.common.TransportObject;
+import to.mps.managementdashboard.ManagementDashboard;
 
 public class AuftragTO implements TransportObject<Auftrag> {
 
@@ -62,6 +63,11 @@ public class AuftragTO implements TransportObject<Auftrag> {
 		auftrag.setIstAbgeschlossen(istAbgeschlossen);
 		auftrag.setBeauftragtAm(beauftragtAm);
 		auftrag.setAngebot(angebot);
+		
+		if(!(ManagementDashboard.exists(auftrag))){
+			ManagementDashboard.newAngebot(auftrag.getAngebot());
+			ManagementDashboard.angebotWirdAuftrag(auftrag.getAngebot());
+		}
 		
 		return auftrag;
 	}

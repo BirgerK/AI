@@ -45,7 +45,8 @@ public class Auftrag extends AbstractEntity implements Serializable{
 		this.setIstAbgeschlossen(istAbgeschlossen);
 		this.setBeauftragtAm(beauftragtAm);
 		this.setAngebot(angebot);
-		if(ManagementDashboard.exists(this)){
+		if(!(ManagementDashboard.exists(this))){
+			ManagementDashboard.newAngebot(this.getAngebot());
 			ManagementDashboard.angebotWirdAuftrag(this.getAngebot());
 		}
 	}

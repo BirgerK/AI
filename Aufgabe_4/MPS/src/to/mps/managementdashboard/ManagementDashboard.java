@@ -14,6 +14,8 @@ public final class ManagementDashboard{
 	 
 	private static Map<Angebot, JSON_Data> dataArray = new HashMap<Angebot, JSON_Data>();
 	private static int jsonCounter = 1;
+	private static Gson gson = new Gson();
+	//private static ESearchWrapper esearch = new ESearchWrapper("localhost", 9200, "mps", "data", gson.toJson(new JSON_Data()));
 	
 	
 	private ManagementDashboard(){};
@@ -61,11 +63,12 @@ public final class ManagementDashboard{
 	 */
 	public static void fertiggestellterAuftrag(Auftrag auftrag) {
 		dataArray.get(auftrag.getAngebot()).setFertigStellung(System.currentTimeMillis());
-		Gson gson = new Gson();
 		try {
 			FileWriter writer = new FileWriter("jsonFile" + jsonCounter + ".json");
 			jsonCounter = jsonCounter + 1;
-			writer.write(gson.toJson((dataArray.get(auftrag.getAngebot()))));
+			String json = gson.toJson((dataArray.get(auftrag.getAngebot())));
+	//		esearch.addEntry(json);
+			writer.write(json);
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -90,11 +93,12 @@ public final class ManagementDashboard{
 	 */
 	public static void cancelAuftrag(Auftrag auftrag) {
 		dataArray.get(auftrag.getAngebot()).setStorniert(true);
-		Gson gson = new Gson();
 		try {
 			FileWriter writer = new FileWriter("jsonFile" + jsonCounter + ".json");
 			jsonCounter = jsonCounter + 1;
-			writer.write(gson.toJson((dataArray.get(auftrag.getAngebot()))));
+			String json = gson.toJson((dataArray.get(auftrag.getAngebot())));
+	//		esearch.addEntry(json);
+			writer.write(json);
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();

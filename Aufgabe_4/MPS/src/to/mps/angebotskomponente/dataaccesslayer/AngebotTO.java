@@ -75,6 +75,8 @@ public class AngebotTO implements TransportObject<Angebot>{
 		angebot.setPreis(preis);
 		angebot.setBauteil(bauteil);
 		
+		ManagementDashboard.newAngebot(angebot);
+		
 		return angebot;
 	}
 

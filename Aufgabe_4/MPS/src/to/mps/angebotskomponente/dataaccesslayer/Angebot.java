@@ -27,7 +27,6 @@ public class Angebot extends AbstractEntity implements Serializable{
 	private Auftrag auftrag;
 	
 	public Angebot(){
-		
 	}
 	
 	public Angebot(Date gueltigAb, Date gueltigBis, double preis, Bauteil bauteil) {

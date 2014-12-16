@@ -7,6 +7,7 @@ import java.rmi.server.RemoteServer;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -70,9 +71,10 @@ public class ClientImpl {
 			       double random = Math.random();
 			       if(random > 0.5){
 			    	   AuftragTO b = dispatcher.angebot2Auftrag(a);
+			    	   Thread.sleep(new Random().nextInt(4000));
 			    	   dispatcher.schliesseAb(b);
 			       }
-				} catch (RemoteException e) {
+				} catch (RemoteException | InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

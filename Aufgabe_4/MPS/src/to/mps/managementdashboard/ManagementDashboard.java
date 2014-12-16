@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import to.mps.angebotskomponente.dataaccesslayer.Angebot;
 import to.mps.auftragskomponente.dataaccesslayer.Auftrag;
@@ -15,7 +16,7 @@ public final class ManagementDashboard{
 	private static Map<Angebot, JSON_Data> dataArray = new HashMap<Angebot, JSON_Data>();
 	private static int jsonCounter = 1;
 	private static Gson gson = new Gson();
-	//private static ESearchWrapper esearch = new ESearchWrapper("localhost", 9200, "mps", "data", gson.toJson(new JSON_Data()));
+	private static ESearchWrapper esearch = new ESearchWrapper("localhost", 9300, "mps", "data", gson.toJson(new JSON_Data()));
 	
 	
 	private ManagementDashboard(){};
@@ -40,6 +41,11 @@ public final class ManagementDashboard{
 	public static void angebotWirdAuftrag(Angebot angebot) {
 		dataArray.get(angebot).setIstEinAuftrag(true);
 		dataArray.get(angebot).setAuftragsErteilung(System.currentTimeMillis());
+		try {
+			Thread.sleep(new Random().nextInt(4000));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -67,7 +73,7 @@ public final class ManagementDashboard{
 			FileWriter writer = new FileWriter("jsonFile" + jsonCounter + ".json");
 			jsonCounter = jsonCounter + 1;
 			String json = gson.toJson((dataArray.get(auftrag.getAngebot())));
-	//		esearch.addEntry(json);
+			esearch.addEntry(json);
 			writer.write(json);
 			writer.close();
 		} catch (IOException e) {
@@ -97,7 +103,7 @@ public final class ManagementDashboard{
 			FileWriter writer = new FileWriter("jsonFile" + jsonCounter + ".json");
 			jsonCounter = jsonCounter + 1;
 			String json = gson.toJson((dataArray.get(auftrag.getAngebot())));
-	//		esearch.addEntry(json);
+			esearch.addEntry(json);
 			writer.write(json);
 			writer.close();
 		} catch (IOException e) {

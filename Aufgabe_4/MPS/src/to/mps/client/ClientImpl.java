@@ -71,10 +71,9 @@ public class ClientImpl {
 			       double random = Math.random();
 			       if(random > 0.5){
 			    	   AuftragTO b = dispatcher.angebot2Auftrag(a);
-			    	   Thread.sleep(new Random().nextInt(4000));
 			    	   dispatcher.schliesseAb(b);
 			       }
-				} catch (RemoteException | InterruptedException e) {
+				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

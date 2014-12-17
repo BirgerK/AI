@@ -1,0 +1,190 @@
+Dez 17, 2014 2:53:52 PM org.apache.catalina.core.AprLifecycleListener init
+Information: Loaded APR based Apache Tomcat Native library 1.1.32 using APR version 1.5.1.
+Dez 17, 2014 2:53:52 PM org.apache.catalina.core.AprLifecycleListener init
+Information: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Dez 17, 2014 2:53:53 PM org.apache.catalina.core.AprLifecycleListener initializeSSL
+Information: OpenSSL successfully initialized with version OpenSSL 1.0.1j 15 Oct 2014
+Dez 17, 2014 2:53:53 PM org.apache.coyote.http11.Http11AprProtocol init
+Information: Initializing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 2:53:53 PM org.apache.coyote.ajp.AjpAprProtocol init
+Information: Initializing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.Catalina load
+Information: Initialization processed in 977 ms
+Dez 17, 2014 2:53:53 PM org.apache.catalina.core.StandardService start
+Information: Starting service Catalina
+Dez 17, 2014 2:53:53 PM org.apache.catalina.core.StandardEngine start
+Information: Starting Servlet Engine: Apache Tomcat/6.0.43
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor host-manager.xml
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor manager.xml
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory docs
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory examples
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory kibana-3.1.2
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory ROOT
+Dez 17, 2014 2:53:53 PM org.apache.coyote.http11.Http11AprProtocol start
+Information: Starting Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 2:53:53 PM org.apache.coyote.ajp.AjpAprProtocol start
+Information: Starting Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 2:53:53 PM org.apache.catalina.startup.Catalina start
+Information: Server startup in 660 ms
+Dez 17, 2014 6:30:24 PM org.apache.catalina.core.AprLifecycleListener init
+Information: Loaded APR based Apache Tomcat Native library 1.1.32 using APR version 1.5.1.
+Dez 17, 2014 6:30:24 PM org.apache.catalina.core.AprLifecycleListener init
+Information: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Dez 17, 2014 6:30:24 PM org.apache.catalina.core.AprLifecycleListener initializeSSL
+Information: OpenSSL successfully initialized with version OpenSSL 1.0.1j 15 Oct 2014
+Dez 17, 2014 6:30:24 PM org.apache.coyote.http11.Http11AprProtocol init
+Information: Initializing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 6:30:24 PM org.apache.coyote.ajp.AjpAprProtocol init
+Information: Initializing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 6:30:24 PM org.apache.catalina.startup.Catalina load
+Information: Initialization processed in 733 ms
+Dez 17, 2014 6:30:24 PM org.apache.catalina.core.StandardService start
+Information: Starting service Catalina
+Dez 17, 2014 6:30:24 PM org.apache.catalina.core.StandardEngine start
+Information: Starting Servlet Engine: Apache Tomcat/6.0.43
+Dez 17, 2014 6:30:24 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor host-manager.xml
+Dez 17, 2014 6:30:24 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor manager.xml
+Dez 17, 2014 6:30:24 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory docs
+Dez 17, 2014 6:30:24 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory examples
+Dez 17, 2014 6:30:25 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory kibana-3.1.2
+Dez 17, 2014 6:30:25 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory ROOT
+Dez 17, 2014 6:30:25 PM org.apache.coyote.http11.Http11AprProtocol start
+Information: Starting Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 6:30:25 PM org.apache.coyote.ajp.AjpAprProtocol start
+Information: Starting Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 6:30:25 PM org.apache.catalina.startup.Catalina start
+Information: Server startup in 456 ms
+Dez 17, 2014 6:51:01 PM org.apache.catalina.core.AprLifecycleListener init
+Information: Loaded APR based Apache Tomcat Native library 1.1.32 using APR version 1.5.1.
+Dez 17, 2014 6:51:01 PM org.apache.catalina.core.AprLifecycleListener init
+Information: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Dez 17, 2014 6:51:01 PM org.apache.catalina.core.AprLifecycleListener initializeSSL
+Information: OpenSSL successfully initialized with version OpenSSL 1.0.1j 15 Oct 2014
+Dez 17, 2014 6:51:01 PM org.apache.coyote.http11.Http11AprProtocol init
+Information: Initializing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 6:51:01 PM org.apache.coyote.ajp.AjpAprProtocol init
+Information: Initializing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 6:51:01 PM org.apache.catalina.startup.Catalina load
+Information: Initialization processed in 707 ms
+Dez 17, 2014 6:51:01 PM org.apache.catalina.core.StandardService start
+Information: Starting service Catalina
+Dez 17, 2014 6:51:01 PM org.apache.catalina.core.StandardEngine start
+Information: Starting Servlet Engine: Apache Tomcat/6.0.43
+Dez 17, 2014 6:51:01 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor host-manager.xml
+Dez 17, 2014 6:51:01 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor manager.xml
+Dez 17, 2014 6:51:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory docs
+Dez 17, 2014 6:51:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory examples
+Dez 17, 2014 6:51:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory kibana-3.1.2
+Dez 17, 2014 6:51:02 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory ROOT
+Dez 17, 2014 6:51:02 PM org.apache.coyote.http11.Http11AprProtocol start
+Information: Starting Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 6:51:02 PM org.apache.coyote.ajp.AjpAprProtocol start
+Information: Starting Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 6:51:02 PM org.apache.catalina.startup.Catalina start
+Information: Server startup in 469 ms
+Dez 17, 2014 7:11:45 PM org.apache.catalina.core.AprLifecycleListener init
+Information: Loaded APR based Apache Tomcat Native library 1.1.32 using APR version 1.5.1.
+Dez 17, 2014 7:11:45 PM org.apache.catalina.core.AprLifecycleListener init
+Information: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Dez 17, 2014 7:11:45 PM org.apache.catalina.core.AprLifecycleListener initializeSSL
+Information: OpenSSL successfully initialized with version OpenSSL 1.0.1j 15 Oct 2014
+Dez 17, 2014 7:11:45 PM org.apache.coyote.http11.Http11AprProtocol init
+Information: Initializing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:11:45 PM org.apache.coyote.ajp.AjpAprProtocol init
+Information: Initializing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:11:45 PM org.apache.catalina.startup.Catalina load
+Information: Initialization processed in 680 ms
+Dez 17, 2014 7:11:45 PM org.apache.catalina.core.StandardService start
+Information: Starting service Catalina
+Dez 17, 2014 7:11:45 PM org.apache.catalina.core.StandardEngine start
+Information: Starting Servlet Engine: Apache Tomcat/6.0.43
+Dez 17, 2014 7:11:45 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor host-manager.xml
+Dez 17, 2014 7:11:46 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor manager.xml
+Dez 17, 2014 7:11:46 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory docs
+Dez 17, 2014 7:11:46 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory examples
+Dez 17, 2014 7:11:46 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory kibana-3.1.2
+Dez 17, 2014 7:11:46 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory ROOT
+Dez 17, 2014 7:11:46 PM org.apache.coyote.http11.Http11AprProtocol start
+Information: Starting Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:11:46 PM org.apache.coyote.ajp.AjpAprProtocol start
+Information: Starting Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:11:46 PM org.apache.catalina.startup.Catalina start
+Information: Server startup in 446 ms
+Dez 17, 2014 7:30:05 PM org.apache.coyote.http11.Http11AprProtocol pause
+Information: Pausing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:30:05 PM org.apache.coyote.ajp.AjpAprProtocol pause
+Information: Pausing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:30:06 PM org.apache.catalina.core.StandardService stop
+Information: Stopping service Catalina
+Dez 17, 2014 7:30:06 PM org.apache.coyote.http11.Http11AprProtocol destroy
+Information: Stopping Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:30:06 PM org.apache.coyote.ajp.AjpAprProtocol destroy
+Information: Stopping Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:30:17 PM org.apache.catalina.core.AprLifecycleListener init
+Information: Loaded APR based Apache Tomcat Native library 1.1.32 using APR version 1.5.1.
+Dez 17, 2014 7:30:17 PM org.apache.catalina.core.AprLifecycleListener init
+Information: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Dez 17, 2014 7:30:18 PM org.apache.catalina.core.AprLifecycleListener initializeSSL
+Information: OpenSSL successfully initialized with version OpenSSL 1.0.1j 15 Oct 2014
+Dez 17, 2014 7:30:18 PM org.apache.coyote.http11.Http11AprProtocol init
+Information: Initializing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:30:18 PM org.apache.coyote.ajp.AjpAprProtocol init
+Information: Initializing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.Catalina load
+Information: Initialization processed in 698 ms
+Dez 17, 2014 7:30:18 PM org.apache.catalina.core.StandardService start
+Information: Starting service Catalina
+Dez 17, 2014 7:30:18 PM org.apache.catalina.core.StandardEngine start
+Information: Starting Servlet Engine: Apache Tomcat/6.0.43
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor host-manager.xml
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.HostConfig deployDescriptor
+Information: Deploying configuration descriptor manager.xml
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory docs
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory examples
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory kibana-3.1.2
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.HostConfig deployDirectory
+Information: Deploying web application directory ROOT
+Dez 17, 2014 7:30:18 PM org.apache.coyote.http11.Http11AprProtocol start
+Information: Starting Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:30:18 PM org.apache.coyote.ajp.AjpAprProtocol start
+Information: Starting Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:30:18 PM org.apache.catalina.startup.Catalina start
+Information: Server startup in 467 ms
+Dez 17, 2014 7:30:51 PM org.apache.coyote.http11.Http11AprProtocol pause
+Information: Pausing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:30:51 PM org.apache.coyote.ajp.AjpAprProtocol pause
+Information: Pausing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 7:30:52 PM org.apache.catalina.core.StandardService stop
+Information: Stopping service Catalina
+Dez 17, 2014 7:30:52 PM org.apache.coyote.http11.Http11AprProtocol destroy
+Information: Stopping Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 7:30:52 PM org.apache.coyote.ajp.AjpAprProtocol destroy
+Information: Stopping Coyote AJP/1.3 on ajp-8009

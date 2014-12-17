@@ -1,1 +1,1 @@
-{"istEinAuftrag":true,"storniert":false,"neuKunde":false,"timestamps":{"auftragsErteilung":1418739836861,"zahlungsEingang":0,"fertigStellung":1418739838277,"ausLieferung":0}}
+{"istEinAuftrag":true,"storniert":false,"neuKunde":false,"auftragsErteilung":1418838800797,"zahlungsEingang":0,"fertigStellung":1418838804230,"ausLieferung":0,"auftragserteilungZuZahlungseingang":-1418838800797,"fertigstellungZuAuslieferung":-1418838804230}

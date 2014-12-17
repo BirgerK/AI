@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 public final class ManagementDashboard{
 	 
 	private static Map<Angebot, JSON_Data> dataArray = new HashMap<Angebot, JSON_Data>();
-	private static int jsonCounter = 1;
+	private static volatile int jsonCounter = 1;
 	private static Gson gson = new Gson();
 	private static ESearchWrapper esearch = new ESearchWrapper("localhost", 9300, "mps", "data", gson.toJson(new JSON_Data()));
 	

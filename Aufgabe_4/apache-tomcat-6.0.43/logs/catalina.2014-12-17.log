@@ -188,3 +188,41 @@ Dez 17, 2014 7:30:52 PM org.apache.coyote.http11.Http11AprProtocol destroy
 Information: Stopping Coyote HTTP/1.1 on http-8080
 Dez 17, 2014 7:30:52 PM org.apache.coyote.ajp.AjpAprProtocol destroy
 Information: Stopping Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 8:20:34 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: Loaded APR based Apache Tomcat Native library 1.1.32 using APR version 1.5.1.
+Dez 17, 2014 8:20:34 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Dez 17, 2014 8:20:35 PM org.apache.catalina.core.AprLifecycleListener initializeSSL
+INFO: OpenSSL successfully initialized with version OpenSSL 1.0.1j 15 Oct 2014
+Dez 17, 2014 8:20:36 PM org.apache.coyote.http11.Http11AprProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 8:20:36 PM org.apache.coyote.ajp.AjpAprProtocol init
+INFO: Initializing Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1447 ms
+Dez 17, 2014 8:20:36 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Dez 17, 2014 8:20:36 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.43
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Dez 17, 2014 8:20:36 PM org.apache.catalina.core.StandardContext start
+SEVERE: Error listenerStart
+Dez 17, 2014 8:20:36 PM org.apache.catalina.core.StandardContext start
+SEVERE: Context [/examples] startup failed due to previous errors
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory kibana-3.1.2
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Dez 17, 2014 8:20:36 PM org.apache.coyote.http11.Http11AprProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Dez 17, 2014 8:20:36 PM org.apache.coyote.ajp.AjpAprProtocol start
+INFO: Starting Coyote AJP/1.3 on ajp-8009
+Dez 17, 2014 8:20:36 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 511 ms

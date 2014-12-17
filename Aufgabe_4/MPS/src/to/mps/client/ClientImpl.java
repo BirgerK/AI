@@ -18,6 +18,7 @@ import to.mps.dashboard.DashboardImpl;
 import to.mps.dispatcher.Dispatcher;
 import to.mps.dispatcher.DispatcherImpl;
 import to.mps.fertigungskomponente.dataaccesslayer.Bauteil;
+import to.mps.managementdashboard.ManagementDashboard;
 import to.mps.monitor.Monitor;
 import to.mps.monitor.MonitorImpl;
 
@@ -72,6 +73,9 @@ public class ClientImpl {
 			       if(random > 0.5){
 			    	   AuftragTO b = dispatcher.angebot2Auftrag(a);
 			    	   dispatcher.schliesseAb(b);
+			       }
+			       else{
+			    	   ManagementDashboard.schliesseAngebotAb(a.toEntity());
 			       }
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block

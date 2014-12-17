@@ -31,7 +31,19 @@ public final class ManagementDashboard{
 	public static void newAngebot(Angebot angebot) {
 		dataArray.put(angebot, new JSON_Data());
 	}
-
+	
+	public static void schliesseAngebotAb(Angebot angebot) {
+		try {
+			FileWriter writer = new FileWriter("jsonFile" + jsonCounter + ".json");
+			jsonCounter = jsonCounter + 1;
+			String json = gson.toJson((dataArray.get(angebot)));
+			esearch.addEntry(json);
+			writer.write(json);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Ein bereits erstelltes Angebot wurde vom Kunden akzeptiert

@@ -88,3 +88,15 @@ java.lang.ClassNotFoundException: listeners.SessionListener
 
 Dez 17, 2014 8:20:36 PM org.apache.catalina.core.StandardContext listenerStart
 SEVERE: Skipped installing application listeners due to previous error(s)
+Dez 17, 2014 8:38:59 PM org.apache.catalina.core.ApplicationContext log
+Information: ContextListener: contextInitialized()
+Dez 17, 2014 8:38:59 PM org.apache.catalina.core.ApplicationContext log
+Information: SessionListener: contextInitialized()
+Dez 17, 2014 8:40:09 PM org.apache.catalina.core.ApplicationContext log
+Information: ContextListener: contextInitialized()
+Dez 17, 2014 8:40:09 PM org.apache.catalina.core.ApplicationContext log
+Information: SessionListener: contextInitialized()
+Dez 17, 2014 8:43:11 PM org.apache.catalina.core.ApplicationContext log
+Information: SessionListener: contextDestroyed()
+Dez 17, 2014 8:43:11 PM org.apache.catalina.core.ApplicationContext log
+Information: ContextListener: contextDestroyed()

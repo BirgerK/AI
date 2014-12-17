@@ -10834,3 +10834,1038 @@ java.io.IOException: Eine vorhandene Verbindung wurde vom Remotehost geschlossen
 [2014-12-17 20:43:04,507][INFO ][node                     ] [Umbo] stopped
 [2014-12-17 20:43:04,508][INFO ][node                     ] [Umbo] closing ...
 [2014-12-17 20:43:04,511][INFO ][node                     ] [Umbo] closed
+[2014-12-17 21:44:04,087][INFO ][node                     ] [Hulk 2099] version[1.4.1], pid[1492], build[89d3241/2014-11-26T15:49:29Z]
+[2014-12-17 21:44:04,087][INFO ][node                     ] [Hulk 2099] initializing ...
+[2014-12-17 21:44:04,090][INFO ][plugins                  ] [Hulk 2099] loaded [], sites []
+[2014-12-17 21:44:06,935][INFO ][node                     ] [Hulk 2099] initialized
+[2014-12-17 21:44:06,935][INFO ][node                     ] [Hulk 2099] starting ...
+[2014-12-17 21:44:07,067][INFO ][transport                ] [Hulk 2099] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.1.12:9300]}
+[2014-12-17 21:44:07,205][INFO ][discovery                ] [Hulk 2099] elasticsearch/UYGfKlmFT1aaVpn8A5K4_A
+[2014-12-17 21:44:10,968][INFO ][cluster.service          ] [Hulk 2099] new_master [Hulk 2099][UYGfKlmFT1aaVpn8A5K4_A][BlueHorst][inet[/192.168.1.12:9300]], reason: zen-disco-join (elected_as_master)
+[2014-12-17 21:44:11,047][INFO ][http                     ] [Hulk 2099] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.12:9200]}
+[2014-12-17 21:44:11,047][INFO ][node                     ] [Hulk 2099] started
+[2014-12-17 21:44:11,396][INFO ][gateway                  ] [Hulk 2099] recovered [2] indices into cluster_state
+[2014-12-17 21:44:23,796][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@65e1a40c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,799][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4db1ed48] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,798][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@65e1a40c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,805][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4db1ed48] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,808][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4db1ed48] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,810][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4db1ed48] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,797][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@65e1a40c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,797][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4db1ed48] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,797][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@65e1a40c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:44:23,797][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@65e1a40c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,489][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@392466e1] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,494][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@392466e1] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,498][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@392466e1] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@392466e1]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,503][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@8f2b35b] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@8f2b35b] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@8f2b35b]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@8f2b35b] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@8f2b35b] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@392466e1] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,855][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3f1cbdec] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,856][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3f1cbdec] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,856][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3f1cbdec] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,855][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3f1cbdec] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,857][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3f1cbdec]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,882][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7440265e] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,884][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7440265e] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,883][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7440265e] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,882][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7440265e] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:47:20,882][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7440265e] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,678][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@75b536ee] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,681][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4690c55f] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,681][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@75b536ee] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,685][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4690c55f] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,681][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4690c55f] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,685][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@75b536ee] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,684][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4690c55f] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,683][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@75b536ee] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,682][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4690c55f] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:04,681][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@75b536ee] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,118][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7e314b08] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,120][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7e314b08] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,122][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4e38f8aa] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,120][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7e314b08] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,125][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4e38f8aa] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,124][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4e38f8aa] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,123][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4e38f8aa] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,122][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@4e38f8aa] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,121][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7e314b08] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,121][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@7e314b08] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@51671314] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,503][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@51671314] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,503][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@51671314] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,502][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@51671314] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,503][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@51671314] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"auftragserteilungZuZahlungseingang"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [auftragserteilungZuZahlungseingang]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,527][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][0], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3d9e636c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,529][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][4], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3d9e636c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,529][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][1], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3d9e636c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,528][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][2], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3d9e636c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:48:13,528][DEBUG][action.search.type       ] [Hulk 2099] [kibana-int][3], node[UYGfKlmFT1aaVpn8A5K4_A], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3d9e636c] lastShard [true]
+org.elasticsearch.search.SearchParseException: [kibana-int][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"facets":{"stats":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}},"stats_*":{"statistical":{"field":"fertigstellungZuAuslieferung"},"facet_filter":{"fquery":{"query":{"filtered":{"query":{"bool":{"should":[{"query_string":{"query":"*"}}]}},"filter":{"bool":{"must_not":[{"terms":{"_type":["dashboard"]}}],"must":[{"exists":{"field":"_type"}}]}}}}}}}},"size":0}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:681)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:537)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:509)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:264)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:231)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$5.call(SearchServiceTransportAction.java:228)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$23.run(SearchServiceTransportAction.java:559)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.elasticsearch.search.facet.FacetPhaseExecutionException: Facet [stats]: No mapping found for field [fertigstellungZuAuslieferung]
+	at org.elasticsearch.search.facet.statistical.StatisticalFacetParser.parse(StatisticalFacetParser.java:129)
+	at org.elasticsearch.search.facet.FacetParseElement.parse(FacetParseElement.java:93)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:665)
+	... 9 more
+[2014-12-17 21:50:05,875][INFO ][node                     ] [Hulk 2099] stopping ...
+[2014-12-17 21:50:05,902][INFO ][node                     ] [Hulk 2099] stopped
+[2014-12-17 21:50:05,902][INFO ][node                     ] [Hulk 2099] closing ...
+[2014-12-17 21:50:05,905][INFO ][node                     ] [Hulk 2099] closed
